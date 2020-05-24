@@ -25,11 +25,11 @@ tr.R0 td.R17C1{ border-left: #000000 1px solid; border-bottom: #000000 1px solid
 tr.R0 td.R19C1{ font-family: Arial; font-size: 9pt; font-style: normal; vertical-align: top; border-left: #000000 1px solid; border-top: #000000 1px solid; }
 tr.R0 td.R21C1{ font-family: Arial; font-size: 8pt; font-style: normal; vertical-align: medium; border-left: #000000 1px solid; border-top: #ffffff 0px none; border-bottom: #000000 1px solid; }
 tr.R0 td.R24C1{ font-family: Arial; font-size: 14pt; font-style: normal; font-weight: bold; vertical-align: medium; }
-tr.R0 td.R37C1{ text-align: center; vertical-align: top; overflow: hidden;border-left: #000000 2px solid; border-top: #000000 1px solid; }
-tr.R0 td.R37C2{ vertical-align: top; border-left: #000000 1px solid; border-top: #000000 1px solid; }
-tr.R0 td.R37C4{ text-align: right; vertical-align: top; border-left: #000000 1px solid; border-top: #000000 1px solid; }
-tr.R0 td.R37C5{ vertical-align: top; border-left: #000000 1px solid; border-top: #000000 1px solid; }
-tr.R0 td.R37C7{ text-align: right; vertical-align: top; border-left: #000000 1px solid; border-top: #000000 1px solid; border-right: #000000 2px solid; }
+tr.R0 td.R37C1{ text-align: center; vertical-align: middle; overflow: hidden;border-left: #000000 2px solid; border-top: #000000 1px solid; }
+tr.R0 td.R37C2{ vertical-align: middle; border-left: #000000 1px solid; border-top: #000000 1px solid; }
+tr.R0 td.R37C4{ text-align: right; vertical-align: middle; border-left: #000000 1px solid; border-top: #000000 1px solid; }
+tr.R0 td.R37C5{ text-align: right; vertical-align: middle; border-left: #000000 1px solid; border-top: #000000 1px solid; }
+tr.R0 td.R37C7{ text-align: right; vertical-align: middle; border-left: #000000 1px solid; border-top: #000000 1px solid; border-right: #000000 2px solid; }
 tr.R15{ height: 17px; }
 tr.R15 td.R15C1{ font-family: Arial; font-size: 9pt; font-style: normal; vertical-align: top; border-left: #000000 1px solid; border-top: #000000 1px solid; border-right: #000000 1px solid; }
 tr.R15 td.R15C19{ font-family: Arial; font-size: 9pt; font-style: normal; vertical-align: medium; border-left: #000000 1px solid; border-top: #000000 1px solid; border-bottom: #000000 1px solid; border-right: #000000 1px solid; }
@@ -54,8 +54,8 @@ tr.R15 td.R51C6S span img { position: absolute; width: 140px; top: 10px; left: -
 tr.R26{ height: 9px; }
 tr.R26 td.R26C1{ border-bottom: #000000 2px solid; }
 tr.R26 td.R39C1{ border-top: #000000 2px solid; }
-table {table-layout: fixed; padding: 0px; padding-left: 2px; vertical-align:bottom; border-collapse:collapse;width: 100%; font-family: Arial; font-size: 8pt; font-style: normal; }
-td { padding: 0px; padding-left: 2px; overflow:hidden; }
+table {table-layout: fixed; padding: 0px; padding-left: 2px; padding-right: 2px; vertical-align:bottom; border-collapse:collapse;width: 100%; font-family: Arial; font-size: 8pt; font-style: normal; }
+td { padding: 0px; padding-left: 2px; padding-right: 2px; overflow:hidden; }
 .cu_space15 { width:100%;height:15px;overflow:hidden; }
 .cu_space44 { width:100%;height:44px;overflow:hidden; }
 .cu_space104 { width:100%;height:104px;overflow:hidden; }
@@ -67,320 +67,320 @@ td { padding: 0px; padding-left: 2px; overflow:hidden; }
 </STYLE>
 
 <TABLE CELLSPACING="0">
-<COL WIDTH="7"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="17"/>
-<COL WIDTH="15"/>
-<COL WIDTH="17"/>
-<COL WIDTH="17"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="11"/>
-<TR CLASS="R0">
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD CLASS="R0C1"><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-<TD><DIV class="cu_space15"><![CDATA[&nbsp;]]></DIV></TD>
-</TR>
+
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+               
+                                                    
+                                                                 
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                         
+     
 <t t-if="True">
     <!-- TO DO: flag of print logo -->
-    <TR CLASS="R0">
-    <TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-    <TD CLASS="R0C1" COLSPAN="32" ROWSPAN="3"><DIV class="cu_space44"></DIV></TD>
-    <TD><DIV class="cu_space15"></DIV></TD>
-    </TR>
-    <TR CLASS="R0">
-    <TD><DIV class="cu_space15"><SPAN></SPAN></DIV></TD>
-    <TD><DIV class="cu_space15"><![CDATA[&nbsp;]]></DIV></TD>
-    </TR>
-    <TR CLASS="R0">
-    <TD><SPAN></SPAN></TD>
-    <TD><![CDATA[&nbsp;]]></TD>
-    </TR>
-    <TR CLASS="R0">
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><![CDATA[&nbsp;]]></TD>
-    </TR>
-    <TR CLASS="R0">
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><![CDATA[&nbsp;]]></TD>
-    </TR>
+                   
+                                                        
+                                                                                 
+                                           
+         
+                   
+                                                        
+                                                             
+         
+                   
+                          
+                               
+         
+                   
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                               
+         
+                   
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                               
+         
 </t><t t-if="False">
-    <TR CLASS="R0">
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD CLASS="R0C1" COLSPAN="24" ROWSPAN="7"><DIV class="cu_space104"></DIV></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD></TD>
-    </TR>
-    <TR CLASS="R0">
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><![CDATA[&nbsp;]]></TD>
-    </TR>
-    <TR CLASS="R0">
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><![CDATA[&nbsp;]]></TD>
-    </TR>
-    <TR CLASS="R0">
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><![CDATA[&nbsp;]]></TD>
-    </TR>
-    <TR CLASS="R0">
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><![CDATA[&nbsp;]]></TD>
-    </TR>
-    <TR CLASS="R0">
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><![CDATA[&nbsp;]]></TD>
-    </TR>
-    <TR CLASS="R0">
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><![CDATA[&nbsp;]]></TD>
-    </TR>
-    <TR CLASS="R0">
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><![CDATA[&nbsp;]]></TD>
-    </TR>
-    <TR CLASS="R0">
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><SPAN></SPAN></TD>
-    <TD><![CDATA[&nbsp;]]></TD>
-    </TR>
+                   
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                                                                                  
+                          
+                          
+             
+         
+                   
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                               
+         
+                   
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                               
+         
+                   
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                               
+         
+                   
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                               
+         
+                   
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                               
+         
+                   
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                               
+         
+                   
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                               
+         
+                   
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                               
+         
 </t>
 <TR CLASS="R15">
 <TD><SPAN></SPAN></TD>
@@ -589,7 +589,7 @@ td { padding: 0px; padding-left: 2px; overflow:hidden; }
 <TR CLASS="R15">
 <TD><SPAN></SPAN></TD>
 <TD CLASS="R29C1" COLSPAN="4"><SPAN class="cu_wspace">Поставщик:</SPAN></TD>
-<TD CLASS="R29C5" COLSPAN="28"><t t-esc="helper.representation(company)"/></TD>
+<TD CLASS="R29C5" COLSPAN="28"><t t-esc="helper.representationcom(company)"/></TD>
 <TD></TD>
 </TR>
 <TR CLASS="R26">
@@ -746,14 +746,14 @@ td { padding: 0px; padding-left: 2px; overflow:hidden; }
 <!-- end header -->
 <!-- start order lines -->
 <TABLE CELLSPACING="0">
-<COL WIDTH="7"/>
+<COL WIDTH="27"/>
 <COL WIDTH="32"/>
 <t t-if="False">
     <!-- TO DO: flag of support article -->
     <COL WIDTH="75"/>
     <COL WIDTH="254"/>
 </t><t t-if="True">
-    <COL WIDTH="329"/>
+    <COL WIDTH="469"/>
 </t>
 <COL WIDTH="55"/>
 <COL WIDTH="42"/>
@@ -781,7 +781,7 @@ td { padding: 0px; padding-left: 2px; overflow:hidden; }
         <!-- TO DO: flag of support article -->
         <TD CLASS="R37C2">Артикул</TD>
     </t>
-    <TD CLASS="R37C2"><t t-esc="line.name or ''"/></TD>
+    <TD CLASS="R37C2"><span t-field="line.name"/></TD>
     <TD CLASS="R37C4"><SPAN class="cu_wspace"><t t-esc="line.product_uom_qty or ''"/></SPAN></TD>
     <TD CLASS="R37C5"><SPAN class="cu_wspace"><t t-esc="line.product_uom.name or ''"/></SPAN></TD>
     <TD CLASS="R37C4"><SPAN class="cu_wspace"><t t-esc="line.price_unit or ''"/></SPAN></TD>
@@ -793,14 +793,14 @@ td { padding: 0px; padding-left: 2px; overflow:hidden; }
 <!-- end order lines -->
 <!-- start total info -->
 <TABLE CELLSPACING="0">
-<COL WIDTH="7"/>
+<COL WIDTH="26"/>
 <COL WIDTH="32"/>
 <COL WIDTH="75"/>
-<COL WIDTH="254"/>
+<COL WIDTH="395"/>
 <COL WIDTH="55"/>
 <COL WIDTH="42"/>
 <COL WIDTH="86"/>
-<COL WIDTH="100"/>
+<COL WIDTH="101"/>
 <TR CLASS="R26">
 <TD><DIV class="cu_space9"><SPAN></SPAN></DIV></TD>
 <TD CLASS="R39C1"><DIV class="cu_space9"><SPAN></SPAN></DIV></TD>
@@ -818,7 +818,7 @@ td { padding: 0px; padding-left: 2px; overflow:hidden; }
 <TD></TD>
 </TR>
 <TR CLASS="R15">
-<TD CLASS="R40C6" COLSPAN="7"><SPAN class="cu_wspace">В том числе НДС</SPAN></TD>
+<TD CLASS="R40C6" COLSPAN="7"><SPAN class="cu_wspace">В том числе НДС:</SPAN></TD>
 <TD CLASS="R40C6"><SPAN class="cu_wspace"><t t-esc="o.amount_tax or '0,00'"/></SPAN></TD>
 <TD></TD>
 </TR>
@@ -831,39 +831,39 @@ td { padding: 0px; padding-left: 2px; overflow:hidden; }
 <!-- end total info -->
 <!-- start footer -->
 <TABLE CELLSPACING="0">
-<COL WIDTH="7"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="17"/>
-<COL WIDTH="15"/>
-<COL WIDTH="17"/>
-<COL WIDTH="17"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="21"/>
-<COL WIDTH="11"/>
+                
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
 <TR CLASS="R26">
 <TD><DIV class="cu_space9"><SPAN></SPAN></DIV></TD>
 <TD><DIV class="cu_space9"><SPAN></SPAN></DIV></TD>

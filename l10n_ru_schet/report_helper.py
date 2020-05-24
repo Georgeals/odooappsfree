@@ -4,7 +4,8 @@
 #    Odoo
 #    Copyright (C) 2014-2018 CodUP (<http://codup.com>).
 #
-##############################################################################
+# Copyright 2019 ArtLine Ltd <http://artlinespb.ru>, 2019
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from datetime import datetime
 import re
@@ -69,8 +70,18 @@ class QWebHelper(object):
         if partner.street2: repr.append(partner.street2)
         return ', '.join(repr)
 
+
+    def representationcom(self, partner):
+        repr = []
+        if partner.name: repr.append(partner.name)
+        if partner.inn: repr.append(u"ИНН " + partner.inn)
+        if partner.kpp: repr.append(u"КПП " + partner.kpp)
+        repr.append(self.address(partner))
+        return ', '.join(repr)
+        
     def representation(self, partner):
         repr = []
+        if not(partner.is_company): partner=partner.parent_id
         if partner.name: repr.append(partner.name)
         if partner.inn: repr.append(u"ИНН " + partner.inn)
         if partner.kpp: repr.append(u"КПП " + partner.kpp)
