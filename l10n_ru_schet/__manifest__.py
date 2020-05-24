@@ -14,7 +14,7 @@ The module for print documents of Russia an invoice for payment.
     * Счет на оплату с выводом подписей и печати
     """,
     'author': 
-        'George Yanguzov, '
+        'ArtLine, '
         'CodUP',
     'website': 'http://artlinespb.ru',
     'license': 'AGPL-3',
