@@ -24,6 +24,9 @@ The module for print documents of Russia an invoice for payment.
     'sequence': 0,
     'depends': ['sale_management'],
     'demo': ['l10n_ru_doc_demo.xml'],
+    "images": [
+        'static/description/banner.png'
+    ],
     'data': [
         'res_partner_view.xml',
         'res_company_view.xml',
