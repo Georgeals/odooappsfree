@@ -12,7 +12,6 @@
     'description': """
 Allows create and use template description of task
 =============================================
-
 This module auto add description for internal of product to the service task description.
 """,
     'website': 'http://artlinespb.ru/',
@@ -20,7 +19,6 @@ This module auto add description for internal of product to the service task des
     'depends': ['sale_timesheet'],
     'installable': True,
     'license': 'AGPL-3',
-    'uninstall_hook': 'uninstall_hook',
     'support': 'george@artlinespb.ru',
     "contributors": ["ArtLine <george@artlinespb.ru>"],
 }
