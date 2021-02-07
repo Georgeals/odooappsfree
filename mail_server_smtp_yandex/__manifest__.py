@@ -34,7 +34,7 @@ Module search smtp server whit user name matches sender address mail header "Fro
 If smtp server not found, then replace address mail header "From" with smtp auth user.
 
 """,
-    'author': "George Yanguzov",
+    'author': "ArtLine",
     'company': 'ArtLineStudio LTD',
     'website': "https://artlinespb.ru/",
     'depends': ['base'],
