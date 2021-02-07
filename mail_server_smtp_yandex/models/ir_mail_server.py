@@ -28,8 +28,7 @@ class IrMailServer(models.Model):
     def send_email(self, message, mail_server_id=None, smtp_server=None, smtp_port=None,
                    smtp_user=None, smtp_password=None, smtp_encryption=None, smtp_debug=False, smtp_session=None):
                           # Get SMTP Server Details from Mail Server
-        # todo начать с проверки сессии
-
+ 
         # search smtp owned by message
         header_from = message.get('From')
         owned_by_mail = re.search('<.*>', header_from).group(0)[1:-1]
@@ -37,6 +36,12 @@ class IrMailServer(models.Model):
         if mail_server.id:
             mail_server_id = mail_server.id
             smtp_session = None
+            if message.get('Return-Path'):
+                # Need for variable: smtp_from = message['Return-Path'] or self._get_default_bounce_address()...
+                if message.get('Return-Path') != header_from:
+                    message.replace_header('Return-Path', header_from)
+            else:
+                message.add_header('Return-Path', header_from)
         else:
             # Replace Header
             if smtp_session.user:
@@ -46,6 +51,7 @@ class IrMailServer(models.Model):
                 smtp_user = mail_server.smtp_user
             header_from = re.sub('<.*>', '<%s>' % smtp_user, header_from)
             message.replace_header('From', header_from)
+
 
         return super(IrMailServer, self).send_email(message, mail_server_id, smtp_server, smtp_port,
                                                     smtp_user, smtp_password, smtp_encryption, smtp_debug, smtp_session)
