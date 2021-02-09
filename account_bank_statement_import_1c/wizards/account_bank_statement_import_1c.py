@@ -2,6 +2,8 @@
 # License OPL-1
 
 import dateutil.parser
+import hashlib
+
 
 from odoo.tools.translate import _
 from odoo import api, models
@@ -45,9 +47,11 @@ class AccountBankStatementImport(models.TransientModel):
                 except:
                     pass
             data[1][i]=dictran
+        
 
         account_number=data[0]['РасчСчет']
         #bank statements data: list of dict containing (optional items marked by o) :
+        
         date_start = dateutil.parser.parse(data[0]['ДатаНачала'], dayfirst=True).date() #'date': date (e.g: 2013-06-26)
         balance_start = float(data[0]['НачальныйОстаток'])#-o 'balance_start': float (e.g: 8368.56)
         balance_stop = float(data[0]['КонечныйОстаток'])#-o 'balance_end_real': float (e.g: 8888.88)
@@ -63,19 +67,23 @@ class AccountBankStatementImport(models.TransientModel):
                 if l['ПлательщикРасчСчет'] == account_number:
                     vals_line['amount'] = -float(l['Сумма'])
                     vals_line['account_number']=l['ПолучательРасчСчет']     #-o 'account_number': string
-                    vals_line['partner_name']=l['Получатель1']  #-o 'partner_name': string
+                    vals_line['partner_name']=l['Получатель']  #-o 'partner_name': string
+                    # vals_line['unique_import_id']=l['ПолучательРасчСчет']+l['Дата'].replace('.','')+l['Номер']   #- 'unique_import_id': string
                 else:
                     vals_line['amount'] = float(l['Сумма'])
                     vals_line['account_number']=l['ПлательщикРасчСчет']     #-o 'account_number': string
-                    vals_line['partner_name']=l['Плательщик1']  #-o 'partner_name': string
+                    vals_line['partner_name']=l['Плательщик']  #-o 'partner_name': string
+                    # vals_line['unique_import_id']=l['ПлательщикРасчСчет']+l['Дата'].replace('.','')+l['Номер']   #- 'unique_import_id': string
+                unique_import_id = ''.join(str(e) for e in vals_line.values())
+                hash_object = hashlib.md5(unique_import_id.encode('utf-8'))
+                vals_line['unique_import_id'] = hash_object.hexdigest()
                 #-o 'note': string
-                #- 'unique_import_id': string
                 vals_line['ref'] = 'п/п №'+l['Номер'] #-o 'ref': string
                 transactions.append(vals_line)
                 vals_line = {}
 
         all_data = {
-                'name': 'to '+data[0]['ДатаКонца'],
+                'name': 'from '+data[0]['ДатаНачала']+' to '+data[0]['ДатаКонца'], # 'name': string (e.g: '000000123')
                 'balance_start': balance_start,
                 'date': date_start,#'date': date (e.g: 2013-06-26)
                 'balance_end_real': balance_stop,
