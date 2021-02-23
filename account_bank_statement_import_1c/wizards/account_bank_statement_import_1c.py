@@ -82,7 +82,6 @@ class AccountBankStatementImport(models.TransientModel):
                 vals_line['ref'] = 'п/п №' + l['Номер']  # -o 'ref': string
                 transactions.append(vals_line)
                 vals_line = {}
-
         all_data = {
             'name': 'from ' + data[0]['ДатаНачала'] + ' to ' + data[0]['ДатаКонца'],
             # 'name': string (e.g: '000000123')
