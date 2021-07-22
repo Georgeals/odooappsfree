@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+            string="Unified Transfer Document"
+            id="account_invoice_report_utd"
+            model="account.invoice"
+            name="l10n_ru_utd.invoice_report_utd"
+            file="l10n_ru_utd.invoice_report_utd"
+            report_type="qweb-pdf"
+            attachment_use="True"
+            attachment="('utd'+(object.number or '').replace('/','')+'.pdf')"
+            paperformat="l10n_ru_doc.paperformat_a4l"/>
+    </data>
+</odoo>
