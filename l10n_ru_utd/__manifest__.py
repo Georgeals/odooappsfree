@@ -21,10 +21,13 @@
     'summary': """
         Russian document - Unified Transfer Document
         
-        10.0.0.2 - Обновление формы УПД от 01.07.2021
-        10.0.0.3 - Fix: отображение корректных данных при выборе контактного лица компании.
         """,
-    'description': """Russian document - Unified Transfer Document""",
+    'description': """
+        Russian document - Unified Transfer Document
+        
+        10.0.0.2 - Обновление формы УПД от 01.07.2021
+        
+        10.0.0.3 - Fix: отображение корректных данных при выборе контактного лица компании.""",
     'author': "ArtLine",
     'company': 'ArtLineStudio LTD',
     'website': "https://artlinespb.ru/",
