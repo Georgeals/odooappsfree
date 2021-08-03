@@ -15,6 +15,13 @@
                 <t t-if="o.partner_id.parent_id and o.partner_id.parent_id.name">
                     <t t-set="partner" t-value="o.partner_id.parent_id"/>
                 </t>
+                <t t-set="partner_shipping" t-value="o.partner_id"/>
+                <t t-if="o.partner_shipping_id and o.partner_shipping_id.name">
+                    <t t-set="partner_shipping" t-value="o.partner_shipping_id"/>
+                </t>
+                <t t-if="o.partner_shipping_id.parent_id and o.partner_shipping_id.parent_id.name">
+                    <t t-set="partner_shipping" t-value="o.partner_shipping_id.parent_id"/>
+                </t>
                 <div class="header">
                     <div class="row">
                         <div class="col-xs-12 text-left" style="margin-top: 130px;position: absolute;font-family: Arial; font-size: 8pt; font-style: normal;border-bottom: 1px solid black;" >
@@ -349,7 +356,8 @@
                                 <td class="R4C4"></td>
                                 <td class="R6C5">Грузополучатель и его адрес:</td>
                                 <td class="R6C6" colspan="9">
-                                    <t t-esc="helper.representation(partner)"/>
+
+                                    <t t-esc="helper.representation(partner_shipping)"/>
                                 </td>
                                 <td class="R6C15">
                                     <span style="white-space:nowrap;max-width:0px;">(4)</span>
