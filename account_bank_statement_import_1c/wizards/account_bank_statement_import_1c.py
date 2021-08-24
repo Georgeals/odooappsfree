@@ -3,11 +3,12 @@
 
 import dateutil.parser
 import hashlib
-
-
 from odoo.tools.translate import _
 from odoo import api, models
 from odoo.exceptions import UserError
+import logging
+
+_logger = logging.getLogger(__name__)
 
 
 class AccountBankStatementImport(models.TransientModel):
@@ -25,69 +26,69 @@ class AccountBankStatementImport(models.TransientModel):
             file_data = data_file.decode('cp1251')
         except:
             raise UserError(_('Could not decode file .'))
-        data=file_data
-        data=data.split('КонецРасчСчет')
-        data[0]=data[0].split('\r\n')
-        dicvp=dict()
+        data = file_data
+        data = data.split('КонецРасчСчет')
+        data[0] = data[0].split('\r\n')
+        dicvp = dict()
         for l in range(len(data[0])):
-            try: 
-                t=data[0][l].split('=')
+            try:
+                t = data[0][l].split('=')
                 dicvp[t[0]] = t[1]
             except:
                 pass
-        data[0]=dicvp
-        data[1]=data[1].split('КонецДокумента')
-        for i in range(len(data[1])):    
-            data[1][i]=data[1][i].split('\r\n')
-            dictran=dict()
-            for j in range(len(data[1][i])):    
-                try: 
-                    t=data[1][i][j].split('=')
+        data[0] = dicvp
+        data[1] = data[1].split('КонецДокумента')
+        for i in range(len(data[1])):
+            data[1][i] = data[1][i].split('\r\n')
+            dictran = dict()
+            for j in range(len(data[1][i])):
+                try:
+                    t = data[1][i][j].split('=')
                     dictran[t[0]] = t[1]
                 except:
                     pass
-            data[1][i]=dictran
-        
+            data[1][i] = dictran
 
-        account_number=data[0]['РасчСчет']
-        #bank statements data: list of dict containing (optional items marked by o) :
-        
-        date_start = dateutil.parser.parse(data[0]['ДатаНачала'], dayfirst=True).date() #'date': date (e.g: 2013-06-26)
-        balance_start = float(data[0]['НачальныйОстаток'])#-o 'balance_start': float (e.g: 8368.56)
-        balance_stop = float(data[0]['КонечныйОстаток'])#-o 'balance_end_real': float (e.g: 8888.88)
-        transactions = [] #- 'transactions': list of dict containing :
+        account_number = data[0]['РасчСчет']
+        # bank statements data: list of dict containing (optional items marked by o) :
+
+        date_start = dateutil.parser.parse(data[0]['ДатаНачала'],
+                                           dayfirst=True).date()  # 'date': date (e.g: 2013-06-26)
+        balance_start = float(data[0]['НачальныйОстаток'])  # -o 'balance_start': float (e.g: 8368.56)
+        balance_stop = float(data[0]['КонечныйОстаток'])  # -o 'balance_end_real': float (e.g: 8888.88)
+        transactions = []  # - 'transactions': list of dict containing :
         vals_line = {}
         vals_bank_statement = {}
 
         for l in data[1]:
-            if len(l)>0:
-                vals_line['name'] = l['НазначениеПлатежа'] # 'name': string (e.g: 'KBC-INVESTERINGSKREDIET 787-5562831-01')
-                vals_line['date'] = dateutil.parser.parse(l['Дата'], dayfirst=True).date() #- 'date': date
-                #- 'amount': float
+            if len(l) > 0:
+                vals_line['name'] = l[
+                    'НазначениеПлатежа']  # 'name': string (e.g: 'KBC-INVESTERINGSKREDIET 787-5562831-01')
+                vals_line['date'] = dateutil.parser.parse(l['Дата'], dayfirst=True).date()  # - 'date': date
+                # - 'amount': float
                 if l['ПлательщикРасчСчет'] == account_number:
                     vals_line['amount'] = -float(l['Сумма'])
-                    vals_line['account_number']=l['ПолучательРасчСчет']     #-o 'account_number': string
-                    vals_line['partner_name']=l['Получатель']  #-o 'partner_name': string
-                    # vals_line['unique_import_id']=l['ПолучательРасчСчет']+l['Дата'].replace('.','')+l['Номер']   #- 'unique_import_id': string
+                    vals_line['account_number'] = l['ПолучательРасчСчет']  # -o 'account_number': string
+                    vals_line['partner_name'] = l['Получатель']  # -o 'partner_name': string
                 else:
                     vals_line['amount'] = float(l['Сумма'])
-                    vals_line['account_number']=l['ПлательщикРасчСчет']     #-o 'account_number': string
-                    vals_line['partner_name']=l['Плательщик']  #-o 'partner_name': string
-                    # vals_line['unique_import_id']=l['ПлательщикРасчСчет']+l['Дата'].replace('.','')+l['Номер']   #- 'unique_import_id': string
+                    vals_line['account_number'] = l['ПлательщикРасчСчет']  # -o 'account_number': string
+                    vals_line['partner_name'] = l['Плательщик']  # -o 'partner_name': string
                 unique_import_id = ''.join(str(e) for e in vals_line.values())
                 hash_object = hashlib.md5(unique_import_id.encode('utf-8'))
-                vals_line['unique_import_id'] = hash_object.hexdigest()
-                #-o 'note': string
-                vals_line['ref'] = 'п/п №'+l['Номер'] #-o 'ref': string
+                vals_line['unique_import_id'] = l['Дата'].replace('.', '') + hash_object.hexdigest()
+                _logger.debug('Namber - %s, Hash - %s', l['Номер'], hash_object.hexdigest())
+                # -o 'note': string
+                vals_line['ref'] = 'п/п №' + l['Номер']  # -o 'ref': string
                 transactions.append(vals_line)
                 vals_line = {}
-
         all_data = {
-                'name': 'from '+data[0]['ДатаНачала']+' to '+data[0]['ДатаКонца'], # 'name': string (e.g: '000000123')
-                'balance_start': balance_start,
-                'date': date_start,#'date': date (e.g: 2013-06-26)
-                'balance_end_real': balance_stop,
-                'transactions': transactions
+            'name': 'from ' + data[0]['ДатаНачала'] + ' to ' + data[0]['ДатаКонца'],
+            # 'name': string (e.g: '000000123')
+            'balance_start': balance_start,
+            'date': date_start,  # 'date': date (e.g: 2013-06-26)
+            'balance_end_real': balance_stop,
+            'transactions': transactions
         }
         vals_bank_statement.update(all_data)
         return None, None, [vals_bank_statement]
@@ -101,6 +102,7 @@ class AccountBankStatementImport(models.TransientModel):
         # If doesn't find account numbers of partner(normal behaviour is to
         # provide 'account_number', which the generic module uses to find
         # the partner), we have to find res.partner through the name
+        test = 5
         partner_obj = self.env['res.partner']
         for statement in res:
             for line_vals in statement['transactions']:
