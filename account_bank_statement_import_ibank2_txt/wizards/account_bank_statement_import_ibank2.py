@@ -91,7 +91,7 @@ class AccountBankStatementImport(models.TransientModel):
         )
         # If doesn't find account numbers of partner(normal behaviour is to
         # provide 'account_number', which the generic module uses to find
-        # the partner), we have to find res.partner through the name
+        test = 1
         partner_obj = self.env['res.partner']
         for statement in res:
             for line_vals in statement['transactions']:
