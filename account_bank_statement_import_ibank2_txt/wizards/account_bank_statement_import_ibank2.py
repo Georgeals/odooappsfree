@@ -89,7 +89,7 @@ class AccountBankStatementImport(models.TransientModel):
         res = super(AccountBankStatementImport, self)._complete_stmts_vals(
             stmt_vals, journal_id, account_number,
         )
-        # If doesn't find account numbers of partner(normal behaviour is to
+        # If doesn't find account numbers of partner(normal behaviour is to source
         # provide 'account_number', which the generic module uses to find
         # the partner), we have to find res.partner through the name source
         partner_obj = self.env['res.partner']
