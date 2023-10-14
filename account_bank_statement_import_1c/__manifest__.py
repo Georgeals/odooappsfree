@@ -6,7 +6,7 @@
 {
     'name': 'Bank Statement Import 1C',
     'category': 'Accounting',
-    'version': '11.0.1.0.1',
+    'version': '11.0.1.1.0',
     'author': 'ArtLine',
     'website': 'https://artlinespb.ru/import-bank-statements-1c-format/',
     'depends': [
