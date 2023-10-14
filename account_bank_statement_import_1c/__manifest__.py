@@ -1,5 +1,7 @@
-# Copyright 2019 ArtLine Ltd <http://artlinespb.ru>, 2019
-# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+# -*- encoding: utf-8 -*-
+# Copyright ArtLineStudio Ltd, 2019 (<http://artlinespb.ru>)
+# Author: George Yanguzov <george@artlinespb.ru>
+# License AGPL-3.0 or later (<http://www.gnu.org/licenses/agpl>).
 
 {
     'name': 'Bank Statement Import 1C',
