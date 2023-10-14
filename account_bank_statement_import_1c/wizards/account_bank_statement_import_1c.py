@@ -41,7 +41,7 @@ class AccountBankStatementImport(models.TransientModel):
         bank_statements = []
         transactions_1c = []
         # Temporary variables
-        section_name = None
+        section_name = ''
         section_dict = {}
         for line_1c in sections_1c_lines:
             if line_1c.startswith('Секция'):
@@ -52,15 +52,15 @@ class AccountBankStatementImport(models.TransientModel):
                 line_1c_key_value = line_1c.split('=')
                 section_dict[line_1c_key_value[0]] = line_1c_key_value[1]
             if line_1c.startswith('Конец'):
+                if line_1c.startswith('КонецФайла'):
+                    break
                 if section_name == 'РасчСчет':
                     bank_statements.append(section_dict)  # section_dict.copy()
                 elif section_name.startswith('Документ'):
                     transactions_1c.append(section_dict)  # section_dict.copy()
                 else:
-                    raise UserError(_('Unknown section type: %s.', section_name))
-                section_name = None
-            if line_1c.startswith('КонецФайла'):
-                break
+                    raise UserError(_('Unknown section type: %s.') % section_name)
+                section_name = ''
 
         account_number = common_info_1c['РасчСчет']
         # bank statements data: list of dict containing (optional items marked by o) :
