@@ -9,7 +9,7 @@
         <field name="arch" type="xml">
             <field name="signature" position="after">
                 <field name="facsimile" widget="image" colspan="2" class="oe_avatar codup_sign"
-                       attrs="{'invisible': [('print_facsimile','=', False)]}"/>
+                       invisible="print_facsimile == False"/>
                 <field name="print_facsimile" invisible="1"/>
             </field>
         </field>

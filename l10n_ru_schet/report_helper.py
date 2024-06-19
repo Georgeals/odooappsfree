@@ -43,8 +43,12 @@ class QWebHelper(object):
         return ''
 
     def ru_date2(self, date):
+        # print(type(date))
+        # if date and date != 'False':
+        #     return dt.ru_strftime(u'%d %B %Y г.', date=datetime.strptime(date, "%Y-%m-%d %H:%M:%S"), inflected=True)
+        # return ''
         if date and date != 'False':
-            return dt.ru_strftime(u'%d %B %Y г.', date=datetime.strptime(date, "%Y-%m-%d %H:%M:%S"), inflected=True)
+            return dt.ru_strftime(u'%d %B %Y г.', date=date, inflected=True)
         return ''
 
     def in_words(self, number):

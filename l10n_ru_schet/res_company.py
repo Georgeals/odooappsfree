@@ -20,3 +20,15 @@ class Company(models.Model):
     print_stamp = fields.Boolean('Print Stamp', help="Check this for adding Stamp of company to documents.")
     stamp = fields.Binary("Stamp")
     print_anywhere = fields.Boolean('Print Anywhere', help="Uncheck this, if you want add Facsimile and Stamp only in email.", default=True)
+    is_ip = fields.Boolean('Индивидуальный предприниматель', default=False)
+    is_self_employed = fields.Boolean('Самозанятый', default=False)
+
+    @api.onchange('is_ip')
+    def _onchange_is_ip(self):
+        if self.is_ip:
+            self.is_self_employed = False
+
+    @api.onchange('is_self_employed')
+    def _onchange_is_self_employed(self):
+        if self.is_self_employed:
+            self.is_ip = False

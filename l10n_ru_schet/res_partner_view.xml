@@ -8,9 +8,9 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <field name="email" position="after">
-                <field name="inn" attrs="{'invisible': [('is_company','=', False)]}"/>
-                <field name="kpp" attrs="{'invisible': [('is_company','=', False)]}"/>
-                <field name="okpo" attrs="{'invisible': [('is_company','=', False)]}"/>
+                <field name="inn" invisible="is_company == False"/>
+                <field name="kpp" invisible="is_company == False"/>
+                <field name="okpo" invisible="is_company == False"/>
             </field>
         </field>
     </record>

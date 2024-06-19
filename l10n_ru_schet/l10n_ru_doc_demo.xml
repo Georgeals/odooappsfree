@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
+<odoo>
     <data noupdate="1">
 
         <record id="main_bank" model="res.bank">
@@ -17,7 +17,6 @@
         </record>
 
         <record id="base.main_partner" model="res.partner">
-            <field name="image">iVBORw0KGgoAAAANSUhEUgAAALQAAABACAYAAACzzl09AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2lpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoxMGE3N2JhNy01MThlLTMwNGEtODcxOC0wMmQ5MWYzYTdiNTUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjQ2QTI3QjdCQ0JCMTFFMzgwRTQ4NjcwRjlEM0QyMTAiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjQ2QTI3QjZCQ0JCMTFFMzgwRTQ4NjcwRjlEM0QyMTAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkYzOTcwMjU2QkNCOTExRTM5OEZFRDU5OUQxQUU3MUUzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkYzOTcwMjU3QkNCOTExRTM5OEZFRDU5OUQxQUU3MUUzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+LLXcsQAAAjFJREFUeNrs3TFKM0EUB3BXv+QAgqViYWflBQLbWNhZKwE7QQSPkCMIItgJQW+gtjmCBxLZr34zsMPDiCK/X6c7swPxz/B4zJhuGIYN+Cs2fQQINAg0fL9/5S+6o6NUUT28v3dh/s1NnP/5OT7/7i7Ov7qK83d24vjFoht7X/f4GOfv78f5fd/5s9uhQaBBoGGdNXSzRs7W2GWNfH09On+4v4/jF4vcehcXcf5qpdFuhwaBBoEGgQaBRqBBoOHnNPvQ2b7zxtZWnF+e7SieV+uVZzkOD0efV33r8ixH38f5RV/a2Q47NAg0CDQkde4UYocGgQaBhpT6TuF8Hovq7e3w43B7O36nr+9z55dXq9hHXi7j/N3dOL7RN+6Oj8fXn07j+15e9KHt0CDQINDwpRp6WC5TdwDTNXKjxh7m8zB+mr0TOJnE972+xvVPTzXe7dAg0CDQsNYa+rf58DfCDo1Ag0DDL6+hu7Oz2Kc9OIjPi7MeZd+6/H/Q3WyW6vtWZzlms/j86Smuf34e1/+IVXd1tqM4y4EdGgQaBBqS3CnEDg0CDQINOXUf+u0tdyfw5CSeN354iPP39kbHV+snz19X3+FS9tHLO5HFeOzQINAg0PDVGrpZIzdq7OHyMjU+XSO3vufw+XmtdyKxQ4NAg0BDq4aeNCZMfGbYoUGgQaBRQ4+aJvvI1VmO8k5g8bzsW1fvS/aRm3cii/c522GHBoEGgYYkdwqxQ4NAg0BDzn8BBgBlrqW6k1gn5wAAAABJRU5ErkJggg==</field>
             <field name="email">codup-test@mail.ru</field>
             <field name="website">www.codup.com</field>
             <field name="inn">0000000000</field>
@@ -31,7 +30,6 @@
             <field name="street2">дом № 13</field>
             <field name="zip">123456</field>
             <field name="city">г.Москва</field>
-            <field name="rml_header1">CodUP</field>
             <field name="chief_id" ref="base.user_root"/>
             <field name="accountant_id" ref="base.user_demo"/>
             <field name="print_facsimile">1</field>
@@ -60,4 +58,4 @@
         </record>
 
     </data>
-</openerp>
+</odoo>

@@ -23,9 +23,13 @@
                             <field name="print_facsimile"/>
                             <field name="print_stamp"/>
                             <field name="print_anywhere"/>
-                            <field name="stamp" widget="image" class="oe_avatar codup_stamp" attrs="{'invisible': [('print_stamp','=', False)]}"/>
+                            <field name="stamp" widget="image" class="oe_avatar codup_stamp" invisible="print_stamp == False"/>
                         </group>
                     </page>
+                </xpath>
+                <xpath expr="//field[@name='currency_id']" position="after">
+                    <field name="is_ip"/>
+                    <field name="is_self_employed"/>
                 </xpath>
             </data>
         </field>
