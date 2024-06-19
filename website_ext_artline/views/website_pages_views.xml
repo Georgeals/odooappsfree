@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="website_pages_tree_view_inherited" model="ir.ui.view">
+        <field name="name">website.page.list.inherited</field>
+        <field name="model">website.page</field>
+        <field name="inherit_id" ref="website.website_pages_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="field[@name='website_id']" position="after">
+                <button name="action_changes_view" type="object"
+                        string="Changes" class="oe_highlight"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

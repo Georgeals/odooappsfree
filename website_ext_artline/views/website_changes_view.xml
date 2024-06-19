@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_website_changes" model="ir.ui.view">
+            <field name="name">website.changes.list</field>
+            <field name="model">website.changes.saver</field>
+            <field name="arch" type="xml">
+                <tree string="Changes">
+                    <field name="saved_data"/>
+                    <field name="page_update_date"/>
+                    <field name="page_update_uid"/>
+                </tree>
+            </field>
+        </record>
+</odoo>
