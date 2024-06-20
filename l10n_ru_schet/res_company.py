@@ -22,6 +22,7 @@ class Company(models.Model):
     print_anywhere = fields.Boolean('Print Anywhere', help="Uncheck this, if you want add Facsimile and Stamp only in email.", default=True)
     is_ip = fields.Boolean('Индивидуальный предприниматель', default=False)
     is_self_employed = fields.Boolean('Самозанятый', default=False)
+    bank_id = fields.Many2one('res.partner.bank', 'Bank account for orders.')
 
     @api.onchange('is_ip')
     def _onchange_is_ip(self):

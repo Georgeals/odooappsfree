@@ -8,6 +8,7 @@
 
 from odoo import api, fields, models
 
+
 class Bank(models.Model):
     _inherit = 'res.bank'
 

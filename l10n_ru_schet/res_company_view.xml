@@ -12,6 +12,7 @@
                     <field name="inn"/>
                     <field name="kpp"/>
                     <field name="okpo"/>
+                    <field name="bank_id"/>
                 </field>
                 <xpath expr="//page" position="after">
                     <page string="Configuration">
