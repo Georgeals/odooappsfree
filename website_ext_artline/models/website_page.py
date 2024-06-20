@@ -15,9 +15,10 @@ class Page(models.Model):
 
     def action_changes_view(self):
         return {
+            "name": _("List of changes for page '%s'") % self.name,
             "type": "ir.actions.act_window",
             "res_model": "website.changes.saver",
-            "views": [[False, "tree"]],
+            "views": [[False, "tree"], [False, "form"]],
             'domain': [['id', 'in', self.changes_ids.ids]],
         }
 

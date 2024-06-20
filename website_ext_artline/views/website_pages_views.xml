@@ -6,6 +6,7 @@
         <field name="inherit_id" ref="website.website_pages_tree_view"/>
         <field name="arch" type="xml">
             <xpath expr="field[@name='website_id']" position="after">
+                <field name="changes_ids"/>
                 <button name="action_changes_view" type="object"
                         string="Changes" class="oe_highlight"/>
             </xpath>

@@ -18,6 +18,9 @@
         'views/website_pages_views.xml',
         'views/website_changes_view.xml',
     ],
+    'images': [
+        'static/description/icon.png'
+    ],
     'installable': True,
     'license': 'LGPL-3',
 }

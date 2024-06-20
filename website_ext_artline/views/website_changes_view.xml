@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_website_changes" model="ir.ui.view">
-            <field name="name">website.changes.list</field>
-            <field name="model">website.changes.saver</field>
-            <field name="arch" type="xml">
-                <tree string="Changes">
-                    <field name="saved_data"/>
+    <record id="view_website_changes_tree" model="ir.ui.view">
+        <field name="name">website.changes.tree</field>
+        <field name="model">website.changes.saver</field>
+        <field name="arch" type="xml">
+            <tree string="Changes" create="false">
+                <field name="page_update_date" readonly="1"/>
+                <field name="page_update_uid" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_website_changes_form" model="ir.ui.view">
+        <field name="name">website.changes.form</field>
+        <field name="model">website.changes.saver</field>
+        <field name="arch" type="xml">
+            <form string="Changes" create="false">
+                <group>
                     <field name="page_update_date"/>
                     <field name="page_update_uid"/>
-                </tree>
-            </field>
-        </record>
+                    <field name="saved_data"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
 </odoo>
