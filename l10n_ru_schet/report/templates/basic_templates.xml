@@ -192,12 +192,12 @@
 		<table style="width: 100%; border: 1px solid black;">
 			<tr>
 				<td style="width: 30%;">
-					<t t-esc="(company.partner_id.bank_ids and company.partner_id.bank_ids[0].bank_name or '')+' '+(company.partner_id.bank_ids and company.partner_id.bank_ids[0].bank_id.city or '')"/>
+					<t t-esc="(company.bank_id and company.bank_id.bank_name or '')+' '+(company.bank_id and company.bank_id.bank_id.city or '')"/>
 				</td>
 				<td style="width: 30%; border-right: 1px solid black;"></td>
 				<td style="width: 10%; border: 1px solid black; text-align: center;">БИК</td>
 				<td style="width: 30%;">
-					<t t-esc="company.partner_id.bank_ids and company.partner_id.bank_ids[0].bank_bic or ''"/>
+					<t t-esc="company.bank_id and company.bank_id.bank_bic or ''"/>
 				</td>
 			</tr>
 			<tr>
@@ -207,7 +207,7 @@
 					<span>Сч. №</span>
 				</td>
 				<td style="width: 30%;">
-					<t t-esc="company.partner_id.bank_ids and company.partner_id.bank_ids[0].bank_id.corr_acc or ''"/>
+					<t t-esc="company.bank_id and company.bank_id.bank_id.corr_acc or ''"/>
 				</td>
 			</tr>
 			<tr>
@@ -235,7 +235,7 @@
 					<span>Сч. №</span>
 				</td>
 				<td style="width: 30%; border-top: 1px solid black;">
-					<t t-esc="company.partner_id.bank_ids and company.partner_id.bank_ids[0].acc_number or ''"/>
+					<t t-esc="company.bank_id and company.bank_id.acc_number or ''"/>
 				</td>
 			</tr>
 			<tr>

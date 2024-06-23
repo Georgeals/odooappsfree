@@ -4,7 +4,7 @@
 
 {
     'name': 'Russia - Schet',
-    'version': '17.0.1.0',
+    'version': '17.0.1.1',
     'summary': 'Счет на оплату',
     'description': """
 The module for print documents of Russia an invoice for payment.
