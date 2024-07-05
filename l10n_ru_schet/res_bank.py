@@ -25,3 +25,4 @@ class ResPartnerBank(models.Model):
         self.bank_name = self.bank_id.name
         self.bank_bic = self.bank_id.bic
         self.bank_corr_acc = self.bank_id.corr_acc
+    # todo Вопрос: как еще можно реализовать подобное l10n_ru_schet/res_bank.py#L24-L28
