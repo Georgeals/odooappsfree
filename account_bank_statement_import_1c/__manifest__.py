@@ -5,7 +5,7 @@
     'category': 'Accounting',
     'version': '10.0.1.3',
     'author': 'ArtLine',
-    'website': 'https://artlinespb.ru/import-bank-statements-1c-format/',
+    'website': 'https://artline-erp.ru/modul-import-vypisok-1c',
     'depends': [
         'account_bank_statement_import',
     ],

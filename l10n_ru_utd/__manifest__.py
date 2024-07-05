@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    ArtLineStudio Ltd.
-#    Copyright (C) 2020-TODAY ArtLineStudio(<https://artlinespb.ru/>).
+#    Copyright (C) 2020-TODAY ArtLineStudio(<https://artline-erp.ru/>).
 #    Author: George Yanguzov(<george@artlinespb.ru>)
 #    you can modify it under the terms of the GNU LESSER
 #    GENERAL PUBLIC LICENSE (LGPL v3), Version 3.
@@ -30,7 +30,7 @@
         10.0.0.3 - Fix: отображение корректных данных при выборе контактного лица компании.""",
     'author': "ArtLine",
     'company': 'ArtLineStudio LTD',
-    'website': "https://artlinespb.ru/",
+    'website': "https://artline-erp.ru/",
     'category': 'Localization', 
     'version': '10.0.0.2',
     'depends': ['base', 'l10n_ru_doc'],

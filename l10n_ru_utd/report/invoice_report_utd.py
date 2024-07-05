@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    ArtLineStudio Ltd.
-#    Copyright (C) 2020-TODAY ArtLineStudio(<https://artlinespb.ru/>).
+#    Copyright (C) 2020-TODAY ArtLineStudio(<https://artline-erp.ru/>).
 #    Author: George Yanguzov(<george@artlinespb.ru>)
 #
 ##############################################################################
