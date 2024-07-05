@@ -6,7 +6,7 @@
     'category': 'Website',
     'version': '10.0.1.1',
     'author': 'ArtLine',
-    'website': 'https://artlinespb.ru',
+    'website': 'https://artline-erp.ru',
     'depends': [
         'website',
     ],
