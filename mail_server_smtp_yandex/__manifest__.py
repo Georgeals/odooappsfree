@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    ArtLineStudio Ltd.
-#    Copyright (C) 2021-TODAY ArtLineStudio <https://artlinespb.ru/>.
+#    Copyright (C) 2021-TODAY ArtLineStudio <https://artline-erp.ru/>.
 #    Author: George Yanguzov <george@artlinespb.ru>
 #    you can modify it under the terms of the GNU LESSER
 #    GENERAL PUBLIC LICENSE (LGPL v3), Version 3.
@@ -36,7 +36,7 @@ If smtp server not found, then replace address mail header "From" with smtp auth
 """,
     'author': "ArtLine",
     'company': 'ArtLineStudio LTD',
-    'website': "https://artlinespb.ru/",
+    'website': "https://artline-erp.ru/",
     'depends': ['base'],
     'installable': True,
     'application': False,

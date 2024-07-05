@@ -6,7 +6,7 @@
     'category': 'Accounting',
     'version': '11.0.1.0.1',
     'author': 'ArtLine',
-    'website': 'https://artlinespb.ru',
+    'website': 'https://artline-erp.ru/modul-import-vypisok-ibank2',
     'depends': [
         'account_bank_statement_import',
     ],
