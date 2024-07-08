@@ -11,7 +11,7 @@
         'website',
     ],
     'description': """
-Модуль сохраняет все изменения внесенные в редакторе сайта.
+The module saves all changes made through the website editor.
 """,
     'data': [
         'security/ir.model.access.csv',
