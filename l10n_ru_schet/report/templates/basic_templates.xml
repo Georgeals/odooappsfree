@@ -162,16 +162,8 @@
 									</span>
 								</td>
 							</tr>
-							<tr style="font-weight: bold;">
-								<td>
-									<span>В том числе НДС:</span>
-								</td>
-								<td>
-									<span>
-										<t t-esc="doc.amount_tax or '0,00'"/>
-									</span>
-								</td>
-							</tr>
+							<t t-set="tax_totals" t-value="doc.tax_totals"/>
+							<t t-call="l10n_ru_schet.document_tax_totals_template_schet"/>
 							<tr style="font-weight: bold;">
 								<td>
 									<span>Всего к оплате:</span>
@@ -189,32 +181,34 @@
 		</div>
 	</template>
 	<template id="document_header_table">
-		<table style="width: 100%; border: 1px solid black;">
+		<table style="width: 100%; border: 1px solid black; height: 200px;">
+			<colgroup>
+				<col style="width: 30%;"/>
+				<col style="width: 30%; border-right: 1px solid black;"/>
+				<col style="width: 10%;"/>
+				<col style="width: 30%;"/>
+			</colgroup>
 			<tr>
-				<td style="width: 30%;">
+				<td colspan="2" rowspan="2" style="width: 30%; vertical-align: top; border-width: 0;">
 					<t t-esc="(company.bank_id and company.bank_id.bank_name or '')+' '+(company.bank_id and company.bank_id.bank_id.city or '')"/>
 				</td>
-				<td style="width: 30%; border-right: 1px solid black;"></td>
 				<td style="width: 10%; border: 1px solid black; text-align: center;">БИК</td>
 				<td style="width: 30%;">
 					<t t-esc="company.bank_id and company.bank_id.bank_bic or ''"/>
 				</td>
 			</tr>
 			<tr>
-				<td style="width: 30%;"></td>
-				<td style="width: 30%; border-right: 1px solid black;"></td>
-				<td style="width: 10%; text-align: center; border-right: 1px solid black;">
+				<td rowspan="2" style="width: 10%; text-align: center; border-right: 1px solid black;">
 					<span>Сч. №</span>
 				</td>
-				<td style="width: 30%;">
+				<td rowspan="2" style="width: 30%;">
 					<t t-esc="company.bank_id and company.bank_id.bank_id.corr_acc or ''"/>
 				</td>
 			</tr>
 			<tr>
-				<td style="width: 30%;">Банк получателя</td>
-				<td style="width: 30%; border-right: 1px solid black;"></td>
-				<td style="width: 10%; border-right: 1px solid black;"></td>
-				<td style="width: 30%;"></td>
+				<td colspan="2" style="width: 30%; vertical-align: top; border-width: 0;">Банк получателя</td>
+<!--				<td style="width: 10%; border-right: 1px solid black;"></td>-->
+<!--				<td style="width: 30%;"></td>-->
 			</tr>
 			<tr>
 				<td style="width: 30%; border: 1px solid black;">
@@ -239,16 +233,13 @@
 				</td>
 			</tr>
 			<tr>
-				<td style="width: 30%;">
+				<td colspan="2" rowspan="2" style="width: 30%; vertical-align: top;">
 					<t t-esc="company.name or ''"/>
 				</td>
-				<td style="width: 30%; border-right: 1px solid black;"></td>
 				<td style="width: 10%; border-right: 1px solid black;"></td>
 				<td style="width: 30%;"></td>
 			</tr>
 			<tr style="height: 20px;">
-				<td style="width: 30%;"></td>
-				<td style="width: 30%; border-right: 1px solid black;"></td>
 				<td style="width: 10%; border-right: 1px solid black;"></td>
 				<td style="width: 30%;"></td>
 			</tr>
@@ -261,5 +252,36 @@
 				<td style="width: 30%;"></td>
 			</tr>
 		</table>
+	</template>
+
+	<template id="document_tax_totals_template_schet">
+		<t t-if="tax_totals['subtotals']">
+			<t t-foreach="tax_totals['subtotals']"
+			   t-as="subtotal">
+				<t t-set="group_name"
+				   t-value="subtotal['name']"/>
+				<t t-foreach="tax_totals['groups_by_subtotal'][group_name]"
+				   t-as="tax">
+					<tr style="font-weight: bold;">
+						<td>
+							<t t-esc="'В том числе ' + tax['tax_group_name'] + ':'"/>
+						</td>
+						<td>
+							<t t-esc="tax['formatted_tax_group_amount']"/>
+						</td>
+					</tr>
+				</t>
+			</t>
+		</t>
+		<t t-else="">
+			<tr style="font-weight: bold;">
+				<td>
+					<t t-esc="'Без налога (НДС):'"/>
+				</td>
+				<td>
+					<t t-esc="'-'"/>
+				</td>
+			</tr>
+		</t>
 	</template>
 </odoo>

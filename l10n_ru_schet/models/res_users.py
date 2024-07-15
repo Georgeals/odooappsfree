@@ -2,14 +2,15 @@
 ##############################################################################
 #
 #    Odoo
-#    Copyright (C) 2014-2018 CodUP (<http://codup.com>).
+#    Copyright (C) 2014-2018 ArtLine (<https://artline-erp.ru/>).
 #
 ##############################################################################
 
 from odoo import api, fields, models
 
-class Users(models.Model):
-    _inherit = 'res.users'
 
-    print_facsimile = fields.Boolean(related='company_id.print_facsimile')
+class Users(models.Model):
+    _inherit = "res.users"
+
+    print_facsimile = fields.Boolean(related="company_id.print_facsimile")
     facsimile = fields.Binary("Facsimile")

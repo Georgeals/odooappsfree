@@ -12,20 +12,22 @@
 			<t t-if="not doc or not 'company_id' in doc">
 				<t t-set="company" t-value="res_company"></t>
 			</t>
-			<div class="page" style="font-size: 12px;">
+
+			<div class="page" style="font-size: 16pt; font-family: Arial;">
 				<div class="oe_structure"/>
+
 				<div>
 					<t t-call="l10n_ru_schet.document_header_table"/>
 				</div>
-                <br/>
-                <br/>
+
 				<h2 class="mt-4">
-					<span>
+					<span style="font-weight: bold; color: black;">
 						<t t-esc="'Счет на оплату' if doc.state in ['draft','sent'] else 'Счет на оплату'"/>
 						<t t-esc="' № '"/>
 						<t t-esc="doc.name"/>
 						<t t-esc="' от '"/>
-						<t t-esc="helper.ru_date2(doc.date_order)"/>
+						<t t-esc="doc.date_order" t-options="{'widget': 'date'}"/>
+						<t t-esc="' г.'"/>
 					</span>
 				</h2>
 				<div style="height: 2px; background-color: black;"></div>
@@ -34,7 +36,7 @@
 						<span>
 							<span>Поставщик:</span>
 							<span style="font-weight: bold; margin-left: 50px;">
-								<t t-esc="helper.representationcom(company)"/>
+								<t t-esc="company.partner_id.get_address_for_schet()"/>
 							</span>
 						</span>
 					</div>
@@ -44,7 +46,7 @@
 						<span>
 							<span>Покупатель:</span>
 							<span style="font-weight: bold; margin-left: 40px;">
-								<t t-esc="helper.representation(doc.partner_id)"/>
+								<t t-esc="doc.partner_id.get_address_for_schet()"/>
 							</span>
 						</span>
 					</div>

@@ -17,8 +17,8 @@
         </record>
 
         <record id="base.main_partner" model="res.partner">
-            <field name="email">artlinestudio-test@mail.ru</field>
-            <field name="website">www.artline-erp.ru</field>
+            <field name="email">artline-test@mail.ru</field>
+            <field name="website">https://artline-erp.ru/</field>
             <field name="inn">0000000000</field>
             <field name="kpp">000000000</field>
             <field name="okpo">00000000</field>
