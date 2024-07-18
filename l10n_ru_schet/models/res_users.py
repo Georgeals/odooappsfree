@@ -14,3 +14,12 @@ class Users(models.Model):
 
     print_facsimile = fields.Boolean(related="company_id.print_facsimile")
     facsimile = fields.Binary("Facsimile")
+
+    def get_initilals_for_report(self):
+        self.ensure_one()
+        fio = self.name
+        return (
+                fio.split()[0]
+                + " "
+                + "".join([fio[0:1] + "." for fio in fio.split()[1:]])
+        ).strip()

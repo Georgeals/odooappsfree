@@ -7,7 +7,6 @@
 ##############################################################################
 
 from odoo import api, models
-from odoo.addons.l10n_ru_schet.report_helper import QWebHelper
 
 
 class RuSaleOrderReport(models.AbstractModel):
@@ -16,7 +15,6 @@ class RuSaleOrderReport(models.AbstractModel):
     def _get_report_values(self, docids, data=None):
         docs = self.env["sale.order"].browse(docids)
         return {
-            "helper": QWebHelper(),
             "doc_ids": docs.ids,
             "doc_model": "sale.order",
             "docs": docs,
