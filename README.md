@@ -1,2 +1,0 @@
-# odooappsfree
-Odoo apps
