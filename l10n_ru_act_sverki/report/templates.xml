@@ -1,0 +1,420 @@
+<odoo>
+    <data>
+        <template id="report_partnerledger_ru_document">
+            <t t-call="web.internal_layout">
+                <div class="page">
+                    <STYLE TYPE="text/css">
+                        .facsimile { position: relative; }
+                        .facsimile img {position: absolute;width:
+                        100px;left: 107px;top: -40px;}
+                        .stamp { position: relative; }
+                        .stamp img {position: absolute;width: 140px;top:
+                        -24px;left: 17px;}
+                        table.table-report {border-collapse: collapse;
+                        border: 1px solid grey;}
+                        table.table-report tbody tr td {border: 1px solid
+                        grey;font-size:13px;}
+                        table.table-report tbody tr th {border: 1px solid
+                        grey;font-size:13px;}
+                        table.table-report thead tr th {border: 1px solid
+                        grey;font-size:14px;}
+                        table {width: 100%;}
+                        th, td {padding: 0px 5px;}
+                    </STYLE>
+                    <h2 align="center">Акт сверки</h2>
+                    <p style="text-align: center;">взаимных расчетов за
+                        период: с
+                        <t t-esc="data['form']['date_from']"/>
+                        по
+                        <t t-esc="data['form']['date_to']"/>
+                        <br/>
+                        между
+                        <strong t-esc="res_company.name"/>
+                        и
+                        <strong t-esc="o.name"/>
+                    </p>
+                    <div class="row">
+                        <div class="col-xs-12" style="font-size: 16px;">Мы,
+                            нижеподписавшиеся,
+                            <t t-if="res_company.chief_id.function">
+                                <t t-esc="res_company.chief_id.function"/>
+                            </t>
+                            <t t-else="">Генеральный директор</t>
+                            <strong t-esc="res_company.name"/>
+                            <t t-esc="helper.initials(res_company.chief_id.name)"/>
+                            , с одной стороны, и Генеральный директор
+                            <strong t-esc="o.name"/>
+                            _________________________________, с другой
+                            стороны, составили настоящий акт сверки в том,
+                            что состояние взаимных расчетов по данным учета
+                            следующее:
+                        </div>
+                    </div>
+                    <br/>
+                    <table class="table-report">
+                        <thead>
+                            <tr>
+                                <th colspan="4">По данным<t
+                                        t-esc="res_company.name"/>, руб
+                                </th>
+                                <th colspan="4">По данным
+                                    <t t-esc="o.name"/>
+                                    , руб
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Дата</th>
+                                <th>Документ</th>
+                                <th>Дебет</th>
+                                <th>Кредит</th>
+                                <th>Дата</th>
+                                <th>Документ</th>
+                                <th>Дебет</th>
+                                <th>Кредит</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="2">
+                                    Сальдо начальное
+                                </td>
+                                <td class="text-right">
+                                    <t t-if="balance(data, o, 'debit - credit', 'initial') >= 0">
+                                        <t t-esc="format(balance(data, o, 'debit - credit', 'initial'))"/>
+                                    </t>
+                                </td>
+
+                                <td class="text-right">
+                                    <t t-if="balance(data, o, 'debit - credit', 'initial') &lt; 0">
+                                        <t t-esc="format(negate(balance(data, o, 'debit - credit', 'initial')))"/>
+                                    </t>
+                                </td>
+                                <td colspan="2">
+                                    Сальдо начальное
+                                </td>
+                                <td class="text-right">
+                                    <t t-if="balance(data, o, 'debit - credit', 'initial') &lt; 0">
+                                        <t t-esc="format(negate(balance(data, o, 'debit - credit', 'initial')))"/>
+                                    </t>
+                                </td>
+
+                                <td class="text-right">
+                                    <t t-if="balance(data, o, 'debit - credit', 'initial') >= 0">
+                                        <t t-esc="format(balance(data, o, 'debit - credit', 'initial'))"/>
+                                    </t>
+                                </td>
+                            </tr>
+                            <tr t-foreach="lines(data, o)" t-as="line">
+                                <td>
+                                    <t t-esc="line['date']"/>
+                                </td>
+                                <td>
+                                    <t t-if="line['move_name'][:3] == 'BNK'">
+                                        Оплата (
+                                        <t t-if="line['name'][:2] == u'СЧ'"></t>
+                                        <t t-else="">
+                                            <t t-esc="line['name']"/>
+                                        </t>
+                                        от<t t-esc="line['date']"/>)
+                                    </t>
+                                    <t t-if="line['move_name'][:2] == u'СЧ'">
+                                        <t t-if="line['debit']>0">Продажа
+                                        </t>
+                                        <t t-if="line['credit']>0">Покупка
+                                        </t>
+                                        (
+                                        <t t-esc="helper.numer(line['displayed_name'])"/>
+                                        от<t t-esc="line['date']"/>)
+                                    </t>
+                                </td>
+                                <td class="text-right">
+                                    <t t-if="line['debit']>0">
+                                        <t t-esc="format(line['debit'])"/>
+                                    </t>
+                                </td>
+                                <td class="text-right">
+                                    <t t-if="line['credit']>0">
+                                        <t t-esc="format(line['credit'])"/>
+                                    </t>
+                                </td>
+                                <td>
+                                    <t t-esc="line['date']"/>
+                                </td>
+                                <td>
+                                    <t t-if="line['move_name'][:3] == 'BNK'">
+                                        Оплата (
+                                        <t t-esc="line['name']"/>
+                                        от<t t-esc="line['date']"/>)
+                                    </t>
+                                    <t t-if="line['move_name'][:2] == u'СЧ'">
+                                        <t t-if="line['debit']>0">Покупка
+                                        </t>
+                                        <t t-if="line['credit']>0">Продажа
+                                        </t>
+                                        (
+                                        <t t-esc="helper.numer(line['displayed_name'])"/>
+                                        от<t t-esc="line['date']"/>)
+                                    </t>
+                                </td>
+                                <td class="text-right">
+                                    <t t-if="line['credit']>0">
+                                        <t t-esc="format(line['credit'])"/>
+                                    </t>
+                                </td>
+                                <td class="text-right">
+                                    <t t-if="line['debit']>0">
+                                        <t t-esc="format(line['debit'])"/>
+                                    </t>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    Обороты за период
+                                </td>
+                                <td class="text-right">
+                                    <t t-esc="format(sum_partner(data, o, 'debit'))"/>
+                                </td>
+                                <td class="text-right">
+                                    <t t-esc="format(sum_partner(data, o, 'credit'))"/>
+                                </td>
+                                <td colspan="2">
+                                    Обороты за период
+                                </td>
+                                <td class="text-right">
+                                    <t t-esc="format(sum_partner(data, o, 'credit'))"/>
+                                </td>
+                                <td class="text-right">
+                                    <t t-esc="format(sum_partner(data, o, 'debit'))"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    Сальдо конечное
+                                </td>
+                                <td class="text-right">
+                                    <t t-if="balance(data, o, 'debit - credit', 'final') >= 0">
+                                        <t t-esc="format(balance(data, o, 'debit - credit', 'final'))"/>
+                                    </t>
+                                </td>
+
+                                <td class="text-right">
+                                    <t t-if="balance(data, o, 'debit - credit', 'final') &lt; 0">
+                                        <t t-esc="format(negate(balance(data, o, 'debit - credit', 'final')))"/>
+
+                                    </t>
+                                </td>
+                                <td colspan="2">
+                                    Сальдо конечное
+                                </td>
+                                <td>
+                                    <t t-if="balance(data, o, 'debit - credit', 'final') &lt; 0">
+                                        <t t-esc="format(negate(balance(data, o, 'debit - credit', 'final')))"/>
+                                    </t>
+                                </td>
+
+                                <td class="text-right">
+                                    <t t-if="balance(data, o, 'debit - credit', 'final') >= 0">
+                                        <t t-esc="format(balance(data, o, 'debit - credit', 'final'))"/>
+                                    </t>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <table width="100%">
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    По данным
+                                    <strong t-esc="res_company.name"/>
+                                </td>
+                                <td>
+                                    По данным
+                                    <strong t-esc="o.name"/>
+                                </td>
+
+                            </tr>
+                            <t t-if="balance(data, o, 'debit - credit', 'final') == 0">
+                                <tr>
+                                    <td>
+                                        <br/>
+                                        <strong>на
+                                            <t t-esc="data['form']['date_to']"/>
+                                            задолженность отсутствует.
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        <br/>
+                                        <strong>на
+                                            <t t-esc="data['form']['date_to']"/>
+                                            задолженность отсутствует.
+                                        </strong>
+                                    </td>
+
+                                </tr>
+                            </t>
+                            <t t-if="balance(data, o, 'debit - credit', 'final') > 0">
+                                <tr>
+                                    <td>
+                                        <br/>
+                                        <strong>на
+                                            <t t-esc="data['form']['date_to']"/>
+                                            задолженность в пользу
+                                            <strong t-esc="res_company.name"/>
+                                            <t t-esc="balance(data, o, 'debit - credit', 'final')"
+                                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            (
+                                            <t t-esc="helper.rubles(balance(data, o, 'debit - credit', 'final')).capitalize()"/>
+                                            ).
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        <br/>
+                                        <strong>на
+                                            <t t-esc="data['form']['date_to']"/>
+                                            задолженность в пользу
+                                            <strong t-esc="res_company.name"/>
+                                            <t t-esc="balance(data, o, 'debit - credit', 'final')"
+                                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            (
+                                            <t t-esc="helper.rubles(balance(data, o, 'debit - credit', 'final')).capitalize()"/>
+                                            ).
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </t>
+                            <t t-if="balance(data, o, 'debit - credit', 'final') &lt; 0">
+                                <tr>
+                                    <td>
+                                        <br/>
+                                        <strong>на
+                                            <t t-esc="data['form']['date_to']"/>
+                                            задолженность в пользу
+                                            <t t-esc="o.name"/>
+                                            <t t-esc="negate(balance(data, o, 'debit - credit', 'final'))"
+                                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            (
+                                            <t t-esc="helper.rubles(negate(balance(data, o, 'debit - credit', 'final'))).capitalize()"/>
+                                            ).
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        <br/>
+                                        <strong>на
+                                            <t t-esc="data['form']['date_to']"/>
+                                            задолженность в пользу
+                                            <t t-esc="o.name"/>
+                                            <t t-esc="negate(balance(data, o, 'debit - credit', 'final'))"
+                                               t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                            (
+                                            <t t-esc="helper.rubles(negate(balance(data, o, 'debit - credit', 'final'))).capitalize()"/>
+                                            ).
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </t>
+                            <tr>
+                                <td>
+                                    <br/>
+                                </td>
+                                <td>
+
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    От
+                                    <strong t-esc="res_company.name"/>
+                                </td>
+                                <td>
+                                    От
+                                    <strong t-esc="o.name"/>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <t t-if="res_company.chief_id.function">
+                                        <t t-esc="res_company.chief_id.function"/>
+                                    </t>
+                                    <t t-else="">Генеральный директор</t>
+                                </td>
+                                <td>
+                                    ____________________
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table width="100%">
+                        <tbody>
+                            <tr>
+                                <td style="border-bottom: 1px solid #000000"
+                                    width="25%">
+                                    <br/>
+                                    <div class='facsimile'>
+                                        <t t-if="res_company.print_facsimile and res_company.print_anywhere and res_company.chief_id.facsimile">
+                                            <img t-att-src="'data:image/png;base64,' + res_company.chief_id.facsimile.decode('utf-8')"/>
+                                        </t>
+                                        <t t-else="">
+                                            <t t-raw="''"/>
+                                        </t>
+                                    </div>
+                                    <div class='stamp'>
+                                        <t t-if="res_company.print_stamp and res_company.print_anywhere and res_company.stamp">
+                                            <img t-att-src="'data:image/png;base64,' + res_company.stamp.decode('utf-8')"/>
+                                        </t>
+                                        <t t-else="">
+                                            <t t-raw="''"/>
+                                        </t>
+                                    </div>
+                                </td>
+                                <td width="25%">
+                                    <br/>
+                                    (
+                                    <t t-esc="helper.initials(res_company.chief_id.name)"/>
+                                    )
+                                </td>
+                                <td style="border-bottom: 1px solid #000000"
+                                    width="25%">
+                                    <br/>
+                                </td>
+                                <td width="25%">
+                                    <br/>
+                                    ( _______________________ )
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <br/>М.П.
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <br/>М.П.
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </t>
+        </template>
+
+        <template id="report_partnerledger_ru_raw">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="l10n_ru_act_sverki.report_partnerledger_ru_document"
+                       t-lang="o.lang"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_partnerledger_ru">
+            <t t-call="l10n_ru_act_sverki.report_partnerledger_ru_raw"/>
+        </template>
+    </data>
+</odoo>
