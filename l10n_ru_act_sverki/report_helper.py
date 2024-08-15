@@ -6,9 +6,7 @@
 #
 ##############################################################################
 
-from datetime import datetime
 import re
-from pytils import numeral,dt
 
 
 class QWebHelper(object):
@@ -25,7 +23,7 @@ class QWebHelper(object):
         toreturn = "<img %s %s src='data:image/%s;base64,%s' />"%(
             width,
             height,
-            type, 
+            type,
             str(img))
         return toreturn
 
@@ -34,29 +32,6 @@ class QWebHelper(object):
             numeration = re.findall('\d+$', name)
             if numeration: return numeration[0]
         return ''
-
-    def ru_date(self, date):
-        # if date and date != 'False':
-        #     return dt.ru_strftime(u'"%d" %B %Y года', date=datetime.strptime(date, "%Y-%m-%d"), inflected=True)
-        # return ''
-        if date and date != 'False':
-            return dt.ru_strftime(u'%d %B %Y г.', date=date, inflected=True)
-        return ''
-
-    def ru_date2(self, date):
-        if date and date != 'False':
-            return dt.ru_strftime(u'%d %B %Y г.', date=datetime.strptime(date, "%Y-%m-%d %H:%M:%S"), inflected=True)
-        return ''
-
-    def in_words(self, number):
-        return numeral.in_words(number)
-
-    def rubles(self, sum):
-        "Transform sum number in rubles to text"
-        text_rubles = numeral.rubles(int(sum))
-        copeck = round((sum - int(sum))*100)
-        text_copeck = numeral.choose_plural(int(copeck), (u"копейка", u"копейки", u"копеек"))
-        return ("%s %02d %s")%(text_rubles, copeck, text_copeck)
 
     def initials(self, fio):
         if fio:
