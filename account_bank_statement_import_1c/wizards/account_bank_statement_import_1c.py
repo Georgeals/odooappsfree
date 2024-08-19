@@ -62,7 +62,16 @@ class AccountBankStatementImport(models.TransientModel):
                     raise UserError(_('Unknown section type: %s.') % section_name)
                 section_name = ''
 
+        # Get Company account number to check if they match the document account number
+        company = self.company_id
+        journals = [journal.bank_acc_number for journal in
+                    company.bank_journal_ids]
+
         account_number = common_info_1c['РасчСчет']
+        if account_number not in journals:
+            raise UserError(
+                _('The account number %s is not match any company bank account') % account_number)
+
         # bank statements data: list of dict containing (optional items marked by o) :
         # 'date': date (e.g: 2013-06-26)
         date_start = datetime.strptime(bank_statements[0]['ДатаНачала'], '%d.%m.%Y').date()

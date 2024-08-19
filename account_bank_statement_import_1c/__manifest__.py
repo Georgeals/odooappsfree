@@ -6,7 +6,7 @@
 {
     'name': 'Bank Statement Import 1C',
     'category': 'Accounting',
-    'version': '11.0.1.1.1',
+    'version': '11.0.1.1.2',
     'author': 'ArtLine',
     'website': 'https://artline-erp.ru/modul-import-vypisok-1c',
     'depends': [
