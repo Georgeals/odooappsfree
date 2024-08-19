@@ -66,8 +66,16 @@ class AccountBankStatementImport(models.TransientModel):
                 except:
                     pass
             data[-1][i]=dictran
+
+        # Get Company account number to check if they match the document account number
+        company = self.env.user.company_id
+        journals = [journal.bank_acc_number for journal in
+                    company.bank_journal_ids]
         
         account_number=data[0]['РасчСчет'.decode('utf-8')]
+        if account_number not in journals:
+            raise UserError(_('The account number %s is not match any company bank account') % account_number)
+
         #bank statements data: list of dict containing (optional items marked by o) :
         date_start = dateutil.parser.parse(data[0]['ДатаНачала'.decode('utf-8')], dayfirst=True).date() 
         #'date': date (e.g: 2013-06-26)
