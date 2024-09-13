@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2019 ArtLine Ltd <http://artlinespb.ru>, 2019
+# Copyright 2019 ArtLine Ltd <https://artline-erp.ru>, 2019
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 {
@@ -18,7 +18,7 @@ The module for print documents of Russia an invoice for payment.
     'author': 
         'ArtLine, '
         'CodUP',
-    'website': 'http://artlinespb.ru',
+    'website': 'https://artline-erp.ru',
     'license': 'AGPL-3',
     'category': 'Localization',
     'sequence': 0,

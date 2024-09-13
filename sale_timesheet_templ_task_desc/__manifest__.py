@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2019 ArtLine Ltd <http://artlinespb.ru>, 2019
+# Copyright 2019 ArtLine Ltd <https://artline-erp.ru>, 2019
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
@@ -14,7 +14,7 @@ Allows create and use template description of task
 =============================================
 This module auto add description for internal of product to the service task description.
 """,
-    'website': 'http://artlinespb.ru/',
+    'website': 'https://artline-erp.ru/',
     'images': ['static/description/banner.png'],    
     'depends': ['sale_timesheet'],
     'installable': True,
