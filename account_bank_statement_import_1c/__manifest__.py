@@ -10,7 +10,7 @@
     'author': 'ArtLine',
     'website': 'https://artline-erp.ru/modul-import-vypisok-1c',
     'depends': [
-        'account_bank_statement_import',
+        'account_bank_statement_import', 'account_invoicing'
     ],
     'data': [
         'wizards/account_bank_statement_import_1c_view.xml',
