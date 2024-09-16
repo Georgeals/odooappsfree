@@ -11,7 +11,7 @@
     "author": "ArtLine",
     "website": "https://artline-erp.ru",
     "license": "AGPL-3",
-    "category": "Localization",  # todo: Категория неправильная. В задачах "добавления функций в других модулях" категорию можно подсмотреть в расширяемом модуле т.е. в account
+    "category": "Accounting",
     "sequence": 0,
     "depends": ["base", "account", "account_invoicing"],
     "data": [
