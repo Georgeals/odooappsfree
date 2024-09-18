@@ -17,25 +17,25 @@
 #
 ##############################################################################
 {
-    'name': "Russian document - UTD",
-    'summary': """
+    "name": "Russian document - UTD",
+    "summary": """
         Russian document - Unified Transfer Document
         
         """,
-    'description': """
+    "description": """
         Russian document - Unified Transfer Document
         
         10.0.0.2 - Обновление формы УПД от 01.07.2021
         
         10.0.0.3 - Fix: отображение корректных данных при выборе контактного лица компании.""",
-    'author': "ArtLine",
-    'company': 'ArtLineStudio LTD',
-    'website': "https://artlinespb.ru/",
-    'category': 'Localization', 
-    'version': '17.0.0.1',
-    'depends': ['base', 'l10n_ru_doc'],
-    'data': [
-        'report/report.xml',
-        'report/template.xml',
+    "author": "ArtLine",
+    "company": "ArtLineStudio LTD",
+    "website": "https://artlinespb.ru/",
+    "category": "Localization",
+    "version": "17.0.0.2",
+    "depends": ["base", "l10n_ru_schet"],
+    "data": [
+        "report/report.xml",
+        "report/template.xml",
     ],
 }
