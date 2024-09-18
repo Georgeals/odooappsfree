@@ -7,7 +7,7 @@
 ##############################################################################
 
 from odoo import api, models
-from odoo.addons.l10n_ru_schet.report_helper import QWebHelper
+from odoo.exceptions import ValidationError
 
 
 class RuSaleOrderReport(models.AbstractModel):
@@ -15,8 +15,11 @@ class RuSaleOrderReport(models.AbstractModel):
 
     def _get_report_values(self, docids, data=None):
         docs = self.env["sale.order"].browse(docids)
+        if not self.env.company.bank_id:
+            raise ValidationError(
+                "Необходимо заполнить банковский счет в карточке компании."
+            )
         return {
-            "helper": QWebHelper(),
             "doc_ids": docs.ids,
             "doc_model": "sale.order",
             "docs": docs,

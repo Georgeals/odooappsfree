@@ -43,6 +43,21 @@ msgid "Check this for adding Stamp of company to documents."
 msgstr "Отметьте, для вставки печати организации в документы."
 
 #. module: l10n_ru_schet
+#: model:ir.model.fields,field_description:l10n_ru_schet.field_res_company_company_type_ru
+msgid "Company Type"
+msgstr "Тип компании"
+
+#. module: l10n_ru_schet
+#: selection:res.company,company_type_ru:0
+msgid "IP"
+msgstr "ИП"
+
+#. module: l10n_ru_schet
+#: selection:res.company,company_type_ru:0
+msgid "Self-Employed"
+msgstr "Самозанятый"
+
+#. module: l10n_ru_schet
 #: help:res.company,print_facsimile:0
 msgid "Check this for adding Facsimiles of responsible persons to documents."
 msgstr "Отметьте, для вставки росписей ответственных лиц в документы."
@@ -85,8 +100,12 @@ msgstr "Акт об оказании услуг"
 
 #. module: l10n_ru_schet
 #: field:res.company,inn:0
-#: field:res.partner,inn:0
 msgid "INN"
+msgstr "ИНН"
+
+#. module: l10n_ru_schet
+#: field:res.partner,vat:0
+msgid "Tax ID"
 msgstr "ИНН"
 
 #. module: l10n_ru_schet

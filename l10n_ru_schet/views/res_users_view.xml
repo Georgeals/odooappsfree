@@ -8,7 +8,7 @@
         <field name="inherit_id" ref="base.view_users_form"/>
         <field name="arch" type="xml">
             <field name="signature" position="after">
-                <field name="facsimile" widget="image" colspan="2" class="oe_avatar codup_sign"
+                <field name="facsimile" widget="image" colspan="2" class="oe_avatar artline_sign"
                        invisible="print_facsimile == False"/>
                 <field name="print_facsimile" invisible="1"/>
             </field>

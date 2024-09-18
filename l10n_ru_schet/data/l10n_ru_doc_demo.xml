@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="main_bank" model="res.bank">
+            <field name="name">ОАО "СБЕРБАНК РОССИИ"</field>
+            <field name="city">г.Москва</field>
+            <field name="bic">044525225</field>
+            <field name="corr_acc">30101810400000000225</field>
+        </record>
+
+        <record id="main_company_bank" model="res.partner.bank">
+            <field name="acc_number">40707810600025341231</field>
+            <field name="bank_id" ref="main_bank"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="partner_id" ref="base.main_partner"/>
+        </record>
+
+        <record id="base.main_partner" model="res.partner">
+            <field name="email">artlinestudio-test@mail.ru</field>
+            <field name="website">www.artline-erp.ru</field>
+            <field name="kpp">000000000</field>
+            <field name="okpo">00000000</field>
+            <field name="vat">0000000000</field>
+        </record>
+
+        <record id="base.main_company" model="res.company">
+            <field name="name">ООО "АртЛайнСтудия"</field>
+            <field name="street">ул. Оптиков</field>
+            <field name="street2">д. 37</field>
+            <field name="zip">123456</field>
+            <field name="city">г. Санкт-Петербург</field>
+            <field name="chief_id" ref="base.user_root"/>
+            <field name="accountant_id" ref="base.user_demo"/>
+            <field name="print_facsimile">1</field>
+            <field name="print_stamp">1</field>
+            <field name="stamp" type="base64" file="l10n_ru_schet/static/image/stamp.png"/>
+            <field name="bank_id" ref="main_company_bank"/>
+            <field name="logo" type="base64" file="l10n_ru_schet/static/description/logo.png"/>
+        </record>
+
+        <record model="res.partner" id="base.partner_root">
+            <field name="name">Иванов Иван Петрович</field>
+            <field name="email">artline-test@mail.ru</field>
+        </record>
+
+        <record model="res.users" id="base.user_root">
+            <field name="signature">Иванов Иван Петрович</field>
+            <field name="facsimile" type="base64" file="l10n_ru_schet/static/image/facsimilie.png"/>
+        </record>
+
+        <record model="res.partner" id="base.partner_demo">
+            <field name="name">Сидоров Семен Иванович</field>
+            <field name="email">artline-test@mail.ru</field>
+        </record>
+
+        <record model="res.users" id="base.user_demo">
+            <field name="signature">Сидоров Семен Иванович</field>
+            <field name="facsimile" type="base64" file="l10n_ru_schet/static/image/facsimilie1.png"/>
+        </record>
+
+    </data>
+</odoo>

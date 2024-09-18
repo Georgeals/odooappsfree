@@ -95,7 +95,7 @@ msgstr ""
 
 #. module: l10n_ru_schet
 #: field:res.company,inn:0
-#: field:res.partner,inn:0
+#: field:res.partner,vat:0
 msgid "INN"
 msgstr ""
 

@@ -3,142 +3,151 @@
 	<!-- Templates for report with stamp -->
 	<template id="document_signatures_with_stamp">
 		<style type="text/css">
-            tr.R15{ height: 17px; }
-            tr.R15 td.R51C10{ text-align: right; border-bottom: #000000 1px
-            solid; }
-            tr.R15 td.R51C6,tr.R15 td.R51C6I,tr.R15 td.R51C6S{ border-bottom:
-            #000000 1px solid; }
-            tr.R15 td.R51C6I,tr.R15 td.R51C6S { overflow: visible; }
-            tr.R15 td.R51C6I span,tr.R15 td.R51C6S span { position: relative; }
-            tr.R15 td.R51C6I span img { position: absolute; width: 100px; top:
-            -30px; }
-            tr.R15 td.R51C6S span img { position: absolute; width: 140px; top:
-            10px; left: -60px; }
-            tr.R15 td.R51C1{ font-family: Arial; font-size: 9pt; font-style:
-            normal; font-weight: bold; }
-        </style>
-		<table style="width: 50%;">
+			tr.R15 { height: 17px; }
+			tr.R15 td.R51C10 { text-align: right; border-bottom: #000000 1px
+			solid; }
+			tr.R15 td.R51C6, tr.R15 td.R51C6I, tr.R15 td.R51C6S { border-bottom:
+			#000000 1px solid; }
+			tr.R15 td.R51C6I, tr.R15 td.R51C6S { overflow: visible; }
+			tr.R15 td.R51C6I span, tr.R15 td.R51C6S span { position: relative; }
+			tr.R15 td.R51C6I span img { position: absolute; width: 100px; top:
+			-30px; }
+			tr.R15 td.R51C6S span img { position: absolute; width: 140px; top:
+			10px; left: -60px; }
+			tr.R15 td.R51C1 { font-family: Arial; font-size: 9pt; font-style:
+			normal; font-weight: bold; }
+		</style>
+		<table style="width: 100%;" class="table table-borderless">
 			<tr class="R15">
 				<td class="R51C1" style="width: 120px;">
 					<span>Руководитель</span>
 				</td>
 				<td class="R51C6I">
 					<span>
-						<t t-raw="company.print_facsimile and (company.print_anywhere or context.get('mark_so_as_sent', False)) and helper.img(company.chief_id.facsimile) or ''"/>
+						<t t-if="company.print_facsimile and (company.print_anywhere or context.get('mark_so_as_sent', False)) and company.chief_id.facsimile">
+							<img t-att-src="'data:image/png;base64,' + company.chief_id.facsimile.decode('utf-8')"/>
+						</t>
+						<t t-else="">
+							<t t-raw="''"/>
+						</t>
 					</span>
 				</td>
 				<td class="R51C6S">
 					<span>
-						<t t-raw="company.print_stamp and (company.print_anywhere or context.get('mark_so_as_sent', False)) and helper.img(company.stamp) or ''"/>
+						<t t-if="company.print_stamp and (company.print_anywhere or context.get('mark_so_as_sent', False)) and company.stamp">
+							<img t-att-src="'data:image/png;base64,' + company.stamp.decode('utf-8')"/>
+						</t>
+						<t t-else="">
+							<t t-raw="''"/>
+						</t>
 					</span>
 				</td>
 				<td class="R51C10" COLSPAN="6">
-					<t t-esc="helper.initials(company.chief_id.name)"/>
+					<t t-esc="company.chief_id.get_initilals_for_report()"/>
 				</td>
-			</tr>
-		</table>
-		<table style="width: 10%;"></table>
-		<t t-if="not company.is_ip and not company.is_self_employed">
-			<table style="width: 40%;">
-				<tr class="R15">
+				<td style="width: 10%;"></td>
+				<t t-if="company.partner_is_company">
 					<td class="R51C1" style="width: 100px;">
 						<span>Бухгалтер</span>
 					</td>
 					<td class="R51C6I">
 						<span>
-							<t t-raw="company.print_facsimile and (company.print_anywhere or context.get('mark_so_as_sent', False)) and helper.img(company.accountant_id.facsimile) or ''"/>
+							<t t-if="company.print_facsimile and (company.print_anywhere or context.get('mark_so_as_sent', False)) and company.accountant_id.facsimile">
+								<img t-att-src="'data:image/png;base64,' + company.accountant_id.facsimile.decode('utf-8')"/>
+							</t>
+							<t t-else="">
+								<t t-raw="''"/>
+							</t>
 						</span>
 					</td>
 					<td class="R51C10">
-						<t t-esc="helper.initials(company.accountant_id.name)"/>
+						<t t-esc="company.accountant_id.get_initilals_for_report()"/>
 					</td>
-				</tr>
-			</table>
-		</t>
+				</t>
+			</tr>
+		</table>
 	</template>
+
 	<!-- Templates for report without stamp -->
 	<template id="document_signatures_without_stamp">
 		<style type="text/css">
-            tr.R15{ height: 17px; }
-            tr.R15 td.R51C10{ text-align: right; border-bottom: #000000 1px
-            solid; }
-            tr.R15 td.R51C6,tr.R15 td.R51C6I,tr.R15 td.R51C6S{ border-bottom:
-            #000000 1px solid; }
-            tr.R15 td.R51C6I,tr.R15 td.R51C6S { overflow: visible; }
-            tr.R15 td.R51C6I span,tr.R15 td.R51C6S span { position: relative; }
-            tr.R15 td.R51C6I span img { position: absolute; width: 100px; top:
-            -30px; }
-            tr.R15 td.R51C6S span img { position: absolute; width: 140px; top:
-            10px; left: -60px; }
-            tr.R15 td.R51C1{ font-family: Arial; font-size: 9pt; font-style:
-            normal; font-weight: bold; }
-        </style>
-		<table style="width: 50%;">
+			tr.R15 { height: 17px; }
+			tr.R15 td.R51C10 { text-align: right; border-bottom: #000000 1px
+			solid; }
+			tr.R15 td.R51C6, tr.R15 td.R51C6I, tr.R15 td.R51C6S { border-bottom:
+			#000000 1px solid; }
+			tr.R15 td.R51C6I, tr.R15 td.R51C6S { overflow: visible; }
+			tr.R15 td.R51C6I span, tr.R15 td.R51C6S span { position: relative; }
+			tr.R15 td.R51C6I span img { position: absolute; width: 100px; top:
+			-30px; }
+			tr.R15 td.R51C6S span img { position: absolute; width: 140px; top:
+			10px; left: -60px; }
+			tr.R15 td.R51C1 { font-family: Arial; font-size: 9pt; font-style:
+			normal; font-weight: bold; }
+		</style>
+		<table style="width: 100%;" class="table table-borderless">
 			<tr class="R15">
 				<td class="R51C1" style="width: 120px;">
 					<span>Руководитель</span>
 				</td>
 				<td class="R51C10" COLSPAN="6">
-					<t t-esc="helper.initials(company.chief_id.name)"/>
+					<t t-esc="company.chief_id.get_initilals_for_report()"/>
 				</td>
-			</tr>
-		</table>
-		<table style="width: 10%;"></table>
-		<t t-if="not company.is_ip and not company.is_self_employed">
-			<table style="width: 40%;">
-				<tr class="R15">
+				<td style="width: 10%;"></td>
+				<t t-if="company.partner_is_company">
 					<td class="R51C1" style="width: 100px;">
 						<span>Бухгалтер</span>
 					</td>
 					<td class="R51C10">
-						<t t-esc="helper.initials(company.accountant_id.name)"/>
+						<t t-esc="company.accountant_id.get_initilals_for_report()"/>
 					</td>
-				</tr>
-			</table>
-		</t>
+				</t>
+			</tr>
+		</table>
 	</template>
+
 	<!-- Templates for both reports with and without stamp -->
 	<template id="document_products_table">
-		<table class="table" style="border-collapse: collapse; border: 2px solid black; width: 100%; table-layout: fixed;">
+		<table class="table table-borderless" style="border-collapse: collapse; width: 100%; table-layout: fixed;">
 			<!-- In case we want to repeat the header, remove "display: table-row-group" -->
 			<thead>
 				<tr style="">
-					<th style="border: 2px solid black; width: 5%">№</th>
-					<th style="border: 2px solid black; width: 45%">Товары (работы, услуги)</th>
-					<th style="border: 2px solid black; width: 10%">Кол-во</th>
-					<th style="border: 2px solid black; width: 10%">Ед.</th>
-					<th style="border: 2px solid black; width: 10%">Цена</th>
-					<th style="border: 2px solid black; width: 10%">Сумма</th>
+					<th style="width: 5%">№</th>
+					<th style="width: 45%">Товары (работы, услуги)</th>
+					<th style="width: 10%">Кол-во</th>
+					<th style="width: 10%">Ед.</th>
+					<th style="width: 10%">Цена</th>
+					<th style="width: 10%">Сумма</th>
 				</tr>
 			</thead>
 			<tbody>
 				<t t-set="current_subtotal" t-value="0"/>
 				<t t-foreach="lines_to_report" t-as="line">
 					<tr>
-						<td style="border: 1px solid black; width: 5%">
+						<td style="width: 5%">
 							<span>
 								<t t-esc="line_index + 1"/>
 							</span>
 						</td>
-						<td style="border: 1px solid black; width: 45%">
+						<td style="width: 45%">
 							<span t-esc="line.name"/>
 						</td>
-						<td style="border: 1px solid black; width: 10%">
+						<td style="width: 10%">
 							<span>
 								<t t-esc="line.product_uom_qty or ''"/>
 							</span>
 						</td>
-						<td style="border: 1px solid black; width: 10%">
+						<td style="width: 10%">
 							<span>
 								<t t-esc="line.product_uom.name or ''"/>
 							</span>
 						</td>
-						<td style="border: 1px solid black; width: 10%">
+						<td style="width: 10%">
 							<span>
 								<t t-esc="line.price_unit or ''"/>
 							</span>
 						</td>
-						<td style="border: 1px solid black; width: 10%">
+						<td style="width: 10%">
 							<span>
 								<t t-esc="(('%.2f')%(line.price_unit*line.product_uom_qty)).replace('.',',') or ''"/>
 							</span>
@@ -180,10 +189,11 @@
 			</div>
 		</div>
 	</template>
+
 	<template id="document_header_table">
-		<table style="width: 100%; border: 1px solid black; height: 200px;">
+		<table style="width: 100%; border: 1px solid black; height: 200px;" class="table table-sm o_main_table mt-4 table-borderless">
 			<colgroup>
-				<col style="width: 30%;"/>
+				<col style="width: 30%; border: 0px solid black;"/>
 				<col style="width: 30%; border-right: 1px solid black;"/>
 				<col style="width: 10%;"/>
 				<col style="width: 30%;"/>
@@ -193,7 +203,7 @@
 					<t t-esc="(company.bank_id and company.bank_id.bank_name or '')+' '+(company.bank_id and company.bank_id.bank_id.city or '')"/>
 				</td>
 				<td style="width: 10%; border: 1px solid black; text-align: center;">БИК</td>
-				<td style="width: 30%;">
+				<td style="width: 30%; border-bottom: 0px solid black;">
 					<t t-esc="company.bank_id and company.bank_id.bank_bic or ''"/>
 				</td>
 			</tr>
@@ -201,14 +211,12 @@
 				<td rowspan="2" style="width: 10%; text-align: center; border-right: 1px solid black;">
 					<span>Сч. №</span>
 				</td>
-				<td rowspan="2" style="width: 30%;">
+				<td rowspan="2" style="width: 30%; border-bottom: 0px solid black;">
 					<t t-esc="company.bank_id and company.bank_id.bank_id.corr_acc or ''"/>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="width: 30%; vertical-align: top; border-width: 0;">Банк получателя</td>
-<!--				<td style="width: 10%; border-right: 1px solid black;"></td>-->
-<!--				<td style="width: 30%;"></td>-->
+				<td colspan="2" style="width: 30%; vertical-align: bottom; border-width: 0;">Банк получателя</td>
 			</tr>
 			<tr>
 				<td style="width: 30%; border: 1px solid black;">
@@ -225,31 +233,27 @@
 						<t t-esc="company.kpp or ''"/>
 					</span>
 				</td>
-				<td style="width: 10%; text-align: center; border-right: 1px solid black; border-top: 1px solid black;">
+				<td style="width: 10%; text-align: center; border-right: 1px solid black; border-top: 1px solid black; border-bottom: 0px solid black;">
 					<span>Сч. №</span>
 				</td>
-				<td style="width: 30%; border-top: 1px solid black;">
+				<td style="width: 30%; border-top: 1px solid black; border-bottom: 0px solid black;">
 					<t t-esc="company.bank_id and company.bank_id.acc_number or ''"/>
 				</td>
 			</tr>
-			<tr>
-				<td colspan="2" rowspan="2" style="width: 30%; vertical-align: top;">
+			<tr height="20px">
+				<td colspan="2" style="width: 30%; vertical-align: top; border-bottom: 0px solid black; vertical-align: top;">
 					<t t-esc="company.name or ''"/>
 				</td>
-				<td style="width: 10%; border-right: 1px solid black;"></td>
-				<td style="width: 30%;"></td>
-			</tr>
-			<tr style="height: 20px;">
-				<td style="width: 10%; border-right: 1px solid black;"></td>
-				<td style="width: 30%;"></td>
+				<td style="width: 10%; border-right: 1px solid black; border-bottom: 0px solid black;"></td>
+				<td style="width: 30%; border-bottom: 0px solid black;"></td>
 			</tr>
 			<tr>
-				<td style="width: 30%;">
+				<td style="width: 30%; border-bottom: 0px solid black; vertical-align: bottom;">
 					<span>Получатель</span>
 				</td>
-				<td style="width: 30%; border-right: 1px solid black;"></td>
-				<td style="width: 10%; border-right: 1px solid black;"></td>
-				<td style="width: 30%;"></td>
+				<td style="width: 30%; border-right: 1px solid black; border-bottom: 0px solid black;"></td>
+				<td style="width: 10%; border-right: 1px solid black; border-bottom: 0px solid black;"></td>
+				<td style="width: 30%; border-bottom: 0px solid black;"></td>
 			</tr>
 		</table>
 	</template>
