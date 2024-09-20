@@ -148,7 +148,7 @@
                         width:100%;height:85px;overflow:hidden; }
                     </STYLE>
 
-                    <TABLE CELLSPACING="0">
+                    <TABLE CELLSPACING="0" class="table-borderless">
                         <COL WIDTH="7"/>
                         <COL WIDTH="202"/>
                         <COL WIDTH="52"/>
@@ -309,7 +309,7 @@
                             </TD>
                             <TD CLASS="R3C1" COLSPAN="14">Грузополучатель и
                                 его адрес:
-                                <t t-esc="doc.partner_id.get_address_for_schet()"/>
+                                <t t-esc="doc.partner_id._display_address(without_company=True)"/>
                             </TD>
                             <TD>
                                 <SPAN></SPAN>
@@ -358,7 +358,7 @@
                             </TD>
                             <TD CLASS="R3C1" COLSPAN="14">ИНН/КПП
                                 покупателя:
-                                <t t-esc="doc.partner_id.inn or ''"/>
+                                <t t-esc="doc.partner_id.vat or ''"/>
                                 <t t-esc="doc.partner_id.kpp and '/'+doc.partner_id.kpp or ''"/>
                             </TD>
                             <TD>
@@ -413,7 +413,7 @@
                     </TABLE>
                     <!-- end header -->
                     <!-- start items header -->
-                    <TABLE CELLSPACING="0">
+                    <TABLE CELLSPACING="0" class="table-borderless">
                         <COL WIDTH="7"/>
                         <COL WIDTH="239"/>
                         <COL WIDTH="47"/>
@@ -695,7 +695,7 @@
                     </TABLE>
                     <!-- end total -->
                     <!-- start footer -->
-                    <TABLE CELLSPACING="0">
+                    <TABLE CELLSPACING="0" class="table-borderless">
                         <COL WIDTH="7"/>
                         <COL WIDTH="202"/>
                         <COL WIDTH="52"/>

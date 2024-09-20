@@ -14,7 +14,7 @@
     "license": "AGPL-3",
     "category": "Localization",
     "sequence": 0,
-    "depends": ["sale_management"],
+    "depends": ["sale_management", "l10n_ru_schet"],
     "data": [
         "report/report_invoice.xml",
         "report/report.xml",
