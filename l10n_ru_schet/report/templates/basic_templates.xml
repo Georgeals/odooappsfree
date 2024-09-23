@@ -17,7 +17,7 @@
 			tr.R15 td.R51C1 { font-family: Arial; font-size: 9pt; font-style:
 			normal; font-weight: bold; }
 		</style>
-		<table style="width: 100%;">
+		<table style="width: 100%;" class="table table-borderless">
 			<tr class="R15">
 				<td class="R51C1" style="width: 120px;">
 					<span>Руководитель</span>
@@ -46,7 +46,7 @@
 					<t t-esc="company.chief_id.get_initilals_for_report()"/>
 				</td>
 				<td style="width: 10%;"></td>
-				<t t-if="not company.is_ip and not company.is_self_employed">
+				<t t-if="company.partner_is_company">
 					<td class="R51C1" style="width: 100px;">
 						<span>Бухгалтер</span>
 					</td>
@@ -85,7 +85,7 @@
 			tr.R15 td.R51C1 { font-family: Arial; font-size: 9pt; font-style:
 			normal; font-weight: bold; }
 		</style>
-		<table style="width: 100%;">
+		<table style="width: 100%;" class="table table-borderless">
 			<tr class="R15">
 				<td class="R51C1" style="width: 120px;">
 					<span>Руководитель</span>
@@ -94,7 +94,7 @@
 					<t t-esc="company.chief_id.get_initilals_for_report()"/>
 				</td>
 				<td style="width: 10%;"></td>
-				<t t-if="not company.is_ip and not company.is_self_employed">
+				<t t-if="company.partner_is_company">
 					<td class="R51C1" style="width: 100px;">
 						<span>Бухгалтер</span>
 					</td>
@@ -108,7 +108,7 @@
 
 	<!-- Templates for both reports with and without stamp -->
 	<template id="document_products_table">
-		<table class="table" style="border-collapse: collapse; width: 100%; table-layout: fixed;">
+		<table class="table table-borderless" style="border-collapse: collapse; width: 100%; table-layout: fixed;">
 			<!-- In case we want to repeat the header, remove "display: table-row-group" -->
 			<thead>
 				<tr style="">
@@ -191,7 +191,7 @@
 	</template>
 
 	<template id="document_header_table">
-		<table style="width: 100%; border: 1px solid black; height: 200px;" class="table table-sm o_main_table mt-4">
+		<table style="width: 100%; border: 1px solid black; height: 200px;" class="table table-sm o_main_table mt-4 table-borderless">
 			<colgroup>
 				<col style="width: 30%; border: 0px solid black;"/>
 				<col style="width: 30%; border-right: 1px solid black;"/>

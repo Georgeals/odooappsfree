@@ -31,6 +31,7 @@ The module for print documents of Russia an invoice for payment.
         "report/templates/report_order.xml",
         "report/templates/report_order_ws.xml",
         "report/templates/basic_templates.xml",
+        # "data/l10n_ru_doc_data.xml",
     ],
     "images": ["static/description/banner.png"],
     "css": ["static/src/css/l10n_ru_doc.css"],

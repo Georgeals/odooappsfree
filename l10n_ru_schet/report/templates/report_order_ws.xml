@@ -21,7 +21,7 @@
 
                 <h2 class="mt-4">
                     <span style="font-weight: bold; color: black;">
-                        <t t-esc="'Счет на оплату' if doc.state in ['draft','sent'] else 'Счет на оплату'"/>
+                        <t t-esc="'Счет на оплату'"/>
                         <!-- todo: и if и else возвращают одинаковое значение, зачем они нужны? -->
                         <t t-esc="' № '"/>
                         <t t-esc="doc.name"/>
