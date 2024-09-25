@@ -56,6 +56,7 @@
                             <span>Покупатель:</span>
                             <span style="font-weight: bold; margin-left: 40px;">
                                 <t t-esc="doc.partner_id.get_address_for_schet()"/>
+                                <t t-if="doc.partner_id.phone" t-esc="', тел. ' + doc.partner_id.phone"></t>
                             </span>
                         </span>
                     </div>
@@ -81,9 +82,7 @@
                         Всего наименований
                         <t t-esc="doc.order_line and len(doc.order_line) or '0' "/>
                         , на сумму
-                        <t t-esc="doc.amount_total or '0,00'"/>
-                        руб.
-
+                        <t t-esc="doc.use_formatlang(doc.amount_total, doc.currency_id)"/>
                     </span>
                 </div>
                 <div>

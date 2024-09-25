@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-25 14:56+0000\n"
-"PO-Revision-Date: 2024-09-25 14:56+0000\n"
+"POT-Creation-Date: 2024-09-25 07:48+0000\n"
+"PO-Revision-Date: 2024-09-25 07:48+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -74,17 +74,17 @@ msgstr ""
 #. module: l10n_ru_schet
 #: model:ir.model,name:l10n_ru_schet.model_res_bank
 msgid "Bank"
-msgstr "Банк"
+msgstr ""
 
 #. module: l10n_ru_schet
 #: model:ir.model,name:l10n_ru_schet.model_res_partner_bank
 msgid "Bank Accounts"
-msgstr "Банковские счета"
+msgstr ""
 
 #. module: l10n_ru_schet
 #: model:ir.model.fields,field_description:l10n_ru_schet.field_res_company__bank_id
 msgid "Bank account for orders."
-msgstr "Банковский счет для заказов."
+msgstr "Банк для заказов."
 
 #. module: l10n_ru_schet
 #: model:ir.model.fields,help:l10n_ru_schet.field_res_company__partner_is_company
@@ -120,7 +120,7 @@ msgstr "Тип компании. ИП\Самозанятый или Юр. лиц
 #. module: l10n_ru_schet
 #: model_terms:ir.ui.view,arch_db:l10n_ru_schet.view_company_ru_form
 msgid "Configuration"
-msgstr "Конфигурация"
+msgstr ""
 
 #. module: l10n_ru_schet
 #: model:ir.model,name:l10n_ru_schet.model_res_partner
@@ -132,22 +132,7 @@ msgstr "Карточка компании"
 #: model:ir.model.fields,field_description:l10n_ru_schet.field_res_bank__corr_acc
 #: model:ir.model.fields,field_description:l10n_ru_schet.field_res_partner_bank__bank_corr_acc
 msgid "Corresponding account"
-msgstr "Счет корреспондента"
-
-#. module: l10n_ru_schet
-#: model:ir.model,name:l10n_ru_schet.model_res_currency
-msgid "Currency"
-msgstr "Валюта"
-
-#. module: l10n_ru_schet
-#: model:ir.model.fields,field_description:l10n_ru_schet.field_res_currency__currency_subunit_label
-msgid "Currency Subunit"
-msgstr "ПРоизводная единица валюты"
-
-#. module: l10n_ru_schet
-#: model:ir.model.fields,field_description:l10n_ru_schet.field_res_currency__currency_unit_label
-msgid "Currency Unit"
-msgstr "Валюта"
+msgstr ""
 
 #. module: l10n_ru_schet
 #: model_terms:ir.ui.view,arch_db:l10n_ru_schet.view_company_ru_form
@@ -210,11 +195,6 @@ msgid "Responsible Persons"
 msgstr "Ответсвенные лица"
 
 #. module: l10n_ru_schet
-#: model:ir.model,name:l10n_ru_schet.model_sale_order
-msgid "Sales Order"
-msgstr "Заказы продаж"
-
-#. module: l10n_ru_schet
 #: model:ir.actions.report,name:l10n_ru_schet.action_report_saleorder_schet
 msgid "Schet"
 msgstr "Счет"
@@ -257,7 +237,7 @@ msgstr "Уберите галочку с данного пункта если х
 #. module: l10n_ru_schet
 #: model:ir.model,name:l10n_ru_schet.model_res_users
 msgid "User"
-msgstr "Полбзователь"
+msgstr ""
 
 #. module: l10n_ru_schet
 #: model:ir.model.fields,help:l10n_ru_schet.field_res_company__company_type_ru
@@ -277,7 +257,7 @@ msgstr ""
 #. module: l10n_ru_schet
 #: model_terms:ir.ui.view,arch_db:l10n_ru_schet.document_header_table
 msgid "БИК"
-msgstr "БИК"
+msgstr ""
 
 #. module: l10n_ru_schet
 #: model_terms:ir.ui.view,arch_db:l10n_ru_schet.document_header_table
@@ -323,4 +303,10 @@ msgstr ""
 #. module: l10n_ru_schet
 #: model_terms:ir.ui.view,arch_db:l10n_ru_schet.document_products_table
 msgid "Цена"
+msgstr ""
+
+#. module: l10n_ru_schet
+#: model_terms:ir.ui.view,arch_db:l10n_ru_schet.report_order_document
+#: model_terms:ir.ui.view,arch_db:l10n_ru_schet.report_order_document_ws
+msgid "руб."
 msgstr ""

@@ -9,7 +9,7 @@
         <field name="arch" type="xml">
             <data>
                 <field name="email" position="after">
-                    <field name="inn"/>
+                    <field name="vat"/>
                     <field name="kpp"/>
                     <field name="okpo"/>
                     <field name="bank_id"/>
@@ -29,9 +29,11 @@
                     </page>
                 </xpath>
                 <xpath expr="//field[@name='currency_id']" position="after">
-                    <field name="partner_id_for_bank" invisible="1"/>
+                    <field name="partner_id" invisible="1"/>
                     <field name="partner_is_company"/>
                     <field name="company_type_ru" invisible="partner_is_company == True" required="partner_is_company == False"/>
+                </xpath>
+                <xpath expr="//field[@name='vat']" position="replace">
                 </xpath>
             </data>
         </field>

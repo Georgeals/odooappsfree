@@ -8,14 +8,14 @@
 from email.policy import default
 
 from odoo import api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class Company(models.Model):
     _inherit = "res.company"
 
-    inn = fields.Char(related="partner_id.vat")
-    kpp = fields.Char(related="partner_id.kpp")
-    okpo = fields.Char(related="partner_id.okpo")
+    kpp = fields.Char(related="partner_id.kpp", readonly=False)
+    okpo = fields.Char(related="partner_id.okpo", readonly=False)
     chief_id = fields.Many2one("res.users", "Chief")
     accountant_id = fields.Many2one("res.users", "General Accountant")
     print_facsimile = fields.Boolean(
@@ -39,9 +39,15 @@ class Company(models.Model):
         required=True,
     )
     partner_is_company = fields.Boolean(related="partner_id.is_company", readonly=False)
-    partner_id_for_bank = fields.Many2one(related="partner_id")
     bank_id = fields.Many2one(
         "res.partner.bank",
         "Bank account for orders.",
-        domain="[('partner_id', '=', partner_id_for_bank)]",
+        domain="[('partner_id', '=', partner_id)]",
     )
+
+    def check_bank_id_is_not_empty(self):
+        for record in self:
+            if not record.bank_id:
+                raise ValidationError(
+                    "Необходимо заполнить банковский счет в карточке компании."
+                )

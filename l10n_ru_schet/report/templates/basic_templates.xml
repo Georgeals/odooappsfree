@@ -16,10 +16,11 @@
 			10px; left: -60px; }
 			tr.R15 td.R51C1 { font-family: Arial; font-size: 9pt; font-style:
 			normal; font-weight: bold; }
+			tr.R15 td.signs { font-size: 16pt; text-align: left; vertical-align: bottom; font-size: 16pt; }
 		</style>
-		<table style="width: 100%;" class="table table-borderless">
+		<table style="width: 100%; height: 0px;" class="table table-borderless">
 			<tr class="R15">
-				<td class="R51C1" style="width: 120px;">
+				<td class="R51C1 signs" style="width: 120px;">
 					<span>Руководитель</span>
 				</td>
 				<td class="R51C6I">
@@ -47,7 +48,7 @@
 				</td>
 				<td style="width: 10%;"></td>
 				<t t-if="company.partner_is_company">
-					<td class="R51C1" style="width: 100px;">
+					<td class="R51C1 signs" style="width: 100px;">
 						<span>Бухгалтер</span>
 					</td>
 					<td class="R51C6I">
@@ -84,10 +85,11 @@
 			10px; left: -60px; }
 			tr.R15 td.R51C1 { font-family: Arial; font-size: 9pt; font-style:
 			normal; font-weight: bold; }
+			tr.R15 td.signs { font-size: 16pt; text-align: left; vertical-align: bottom; font-size: 16pt; }
 		</style>
 		<table style="width: 100%;" class="table table-borderless">
 			<tr class="R15">
-				<td class="R51C1" style="width: 120px;">
+				<td class="R51C1 signs" style="width: 120px;">
 					<span>Руководитель</span>
 				</td>
 				<td class="R51C10" COLSPAN="6">
@@ -95,7 +97,7 @@
 				</td>
 				<td style="width: 10%;"></td>
 				<t t-if="company.partner_is_company">
-					<td class="R51C1" style="width: 100px;">
+					<td class="R51C1 signs" style="width: 100px;">
 						<span>Бухгалтер</span>
 					</td>
 					<td class="R51C10">
@@ -144,12 +146,13 @@
 						</td>
 						<td style="width: 10%">
 							<span>
-								<t t-esc="line.price_unit or ''"/>
+								<t t-esc="doc.use_formatlang(line.price_unit, line.currency_id)"/>
 							</span>
 						</td>
 						<td style="width: 10%">
 							<span>
-								<t t-esc="(('%.2f')%(line.price_unit*line.product_uom_qty)).replace('.',',') or ''"/>
+<!--								<t t-esc="(('%.2f')%(line.price_unit*line.product_uom_qty)).replace('.',',') or ''"/>-->
+								<t t-esc="doc.use_formatlang((line.price_unit*line.product_uom_qty), doc.currency_id)"/>
 							</span>
 						</td>
 					</tr>
@@ -159,27 +162,28 @@
 		<div class="clearfix" name="so_total_summary">
 			<div id="total" class="row" name="total">
 				<div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ms-auto">
+<!--					<table class="table table-sm table-borderless">-->
 					<table class="table table-sm table-borderless">
 						<tbody>
-							<tr style="font-weight: bold;">
-								<td>
+							<tr style="font-weight: bold; border-top: 1px solid black;">
+								<td style="border-top: 1px solid black;">
 									<span>Итого:</span>
 								</td>
-								<td>
+								<td style="border-top: 1px solid black;">
 									<span>
-										<t t-esc="doc.amount_total or '0,00'"/>
+										<t t-esc="doc.use_formatlang(doc.amount_total, doc.currency_id)"/>
 									</span>
 								</td>
 							</tr>
 							<t t-set="tax_totals" t-value="doc.tax_totals"/>
 							<t t-call="l10n_ru_schet.document_tax_totals_template_schet"/>
-							<tr style="font-weight: bold;">
-								<td>
+							<tr style="font-weight: bold; border-top: 1px solid black;">
+								<td style="border-top: 1px solid black;">
 									<span>Всего к оплате:</span>
 								</td>
-								<td>
+								<td style="border-top: 1px solid black;">
 									<span>
-										<t t-esc="doc.amount_total or '0,00'"/>
+										<t t-esc="doc.use_formatlang(doc.amount_total, doc.currency_id)"/>
 									</span>
 								</td>
 							</tr>
@@ -191,39 +195,39 @@
 	</template>
 
 	<template id="document_header_table">
-		<table style="width: 100%; border: 1px solid black; height: 200px;" class="table table-sm o_main_table mt-4 table-borderless">
+		<table colspan="2" class="table table-borderless" style="border: 1px solid black;">
 			<colgroup>
-				<col style="width: 30%; border: 0px solid black;"/>
-				<col style="width: 30%; border-right: 1px solid black;"/>
-				<col style="width: 10%;"/>
+				<col style="width: 30%;"/>
+				<col style="width: 30%;"/>
+				<col style="width: 10%; border-right: 1px solid black; border-left: 1px solid black;"/>
 				<col style="width: 30%;"/>
 			</colgroup>
 			<tr>
-				<td colspan="2" rowspan="2" style="width: 30%; vertical-align: top; border-width: 0;">
+				<td colspan="2" rowspan="2" style="width: 30%; vertical-align: top;">
 					<t t-esc="(company.bank_id and company.bank_id.bank_name or '')+' '+(company.bank_id and company.bank_id.bank_id.city or '')"/>
 				</td>
-				<td style="width: 10%; border: 1px solid black; text-align: center;">БИК</td>
-				<td style="width: 30%; border-bottom: 0px solid black;">
+				<td style="width: 10%; text-align: center; border-bottom: 1px solid black;">БИК</td>
+				<td style="width: 30%;">
 					<t t-esc="company.bank_id and company.bank_id.bank_bic or ''"/>
 				</td>
 			</tr>
 			<tr>
-				<td rowspan="2" style="width: 10%; text-align: center; border-right: 1px solid black;">
+				<td rowspan="2" style="width: 10%; text-align: center;">
 					<span>Сч. №</span>
 				</td>
-				<td rowspan="2" style="width: 30%; border-bottom: 0px solid black;">
+				<td rowspan="2" style="width: 30%;">
 					<t t-esc="company.bank_id and company.bank_id.bank_id.corr_acc or ''"/>
 				</td>
 			</tr>
-			<tr>
-				<td colspan="2" style="width: 30%; vertical-align: bottom; border-width: 0;">Банк получателя</td>
+			<tr style="border-bottom: 1px solid black;">
+				<td colspan="2" style="width: 30%; vertical-align: bottom;">Банк получателя</td>
 			</tr>
 			<tr>
-				<td style="width: 30%; border: 1px solid black;">
+				<td style="width: 30%; border: 1px solid black; ">
 					<span style="word-spacing: 50px;">
                                 ИНН
 
-						<t t-esc="company.inn or ''"/>
+						<t t-esc="company.vat or ''"/>
 					</span>
 				</td>
 				<td style="width: 30%; border: 1px solid black;">
@@ -233,30 +237,31 @@
 						<t t-esc="company.kpp or ''"/>
 					</span>
 				</td>
-				<td style="width: 10%; text-align: center; border-right: 1px solid black; border-top: 1px solid black; border-bottom: 0px solid black;">
+				<td style="width: 10%; text-align: center;">
 					<span>Сч. №</span>
 				</td>
-				<td style="width: 30%; border-top: 1px solid black; border-bottom: 0px solid black;">
+				<td style="width: 30%;">
 					<t t-esc="company.bank_id and company.bank_id.acc_number or ''"/>
 				</td>
 			</tr>
 			<tr height="20px">
-				<td colspan="2" style="width: 30%; vertical-align: top; border-bottom: 0px solid black; vertical-align: top;">
+				<td colspan="2" style="width: 30%; vertical-align: top; vertical-align: top;">
 					<t t-esc="company.name or ''"/>
 				</td>
-				<td style="width: 10%; border-right: 1px solid black; border-bottom: 0px solid black;"></td>
-				<td style="width: 30%; border-bottom: 0px solid black;"></td>
+				<td style="width: 10%;"></td>
+				<td style="width: 30%;"></td>
 			</tr>
 			<tr>
-				<td style="width: 30%; border-bottom: 0px solid black; vertical-align: bottom;">
+				<td style="width: 30%; vertical-align: bottom;">
 					<span>Получатель</span>
 				</td>
-				<td style="width: 30%; border-right: 1px solid black; border-bottom: 0px solid black;"></td>
-				<td style="width: 10%; border-right: 1px solid black; border-bottom: 0px solid black;"></td>
-				<td style="width: 30%; border-bottom: 0px solid black;"></td>
+				<td style="width: 30%;"></td>
+				<td style="width: 10%;"></td>
+				<td style="width: 30%;"></td>
 			</tr>
 		</table>
 	</template>
+
 
 	<template id="document_tax_totals_template_schet">
 		<t t-if="tax_totals['subtotals']">

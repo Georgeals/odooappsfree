@@ -20,8 +20,12 @@ The module for print documents of Russia an invoice for payment.
     "license": "AGPL-3",
     "category": "Localization",
     "sequence": 0,
-    "depends": ["sale_management"],
-    "demo": ["data/l10n_ru_doc_demo.xml"],
+    "depends": [
+        "sale_management",
+    ],
+    "demo": [
+        "data/l10n_ru_doc_demo.xml",
+    ],
     "data": [
         "views/res_partner_view.xml",
         "views/res_company_view.xml",
