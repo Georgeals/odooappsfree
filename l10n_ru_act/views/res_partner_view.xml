@@ -8,7 +8,7 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <xpath expr="/form/sheet/group[1]/group[2]" position="inside">
-                <field name="inn" invisible="is_company == False"/>
+                <field name="vat" invisible="is_company == False"/>
                 <field name="kpp" invisible="is_company == False"/>
                 <field name="okpo" invisible="is_company == False"/>
             </xpath>
