@@ -6,10 +6,10 @@
                 <t t-set="doc"
                    t-value="doc.with_context(lang=doc.partner_id.lang)"/>
                 <!-- Multicompany -->
-                <t t-if="o and 'company_id' in o">
+                <t t-if="doc and 'company_id' in doc">
                     <t t-set="company" t-value="doc.company_id"></t>
                 </t>
-                <t t-if="not o or not 'company_id' in o">
+                <t t-if="not doc or not 'company_id' in doc">
                     <t t-set="company" t-value="res_company"></t>
                 </t>
                 <t t-set="context" t-value="doc._context"></t>
@@ -126,7 +126,7 @@
                     </STYLE>
 
                     <!-- start header -->
-                    <TABLE CELLSPACING="0">
+                    <TABLE CELLSPACING="0" class="table-borderless">
                         <COL WIDTH="21"/>
                         <COL WIDTH="21"/>
                         <COL WIDTH="21"/>
@@ -1357,12 +1357,12 @@
                                 </TD>
                                 <TD CLASS="R14C20" COLSPAN="4">
                                     <SPAN class="cu_wspace">
-                                        <t t-esc="(('%.2f')%(line.price_subtotal/line.quantity)).replace('.',',') or ''"/>
+                                        <t t-esc="doc.use_formatlang(line.price_unit, line.currency_id)"/>
                                     </SPAN>
                                 </TD>
                                 <TD CLASS="R14C29" COLSPAN="4">
                                     <SPAN class="cu_wspace">
-                                        <t t-esc="line.price_subtotal or ''"/>
+                                        <t t-esc="doc.use_formatlang(line.price_subtotal, doc.currency_id)"/>
                                     </SPAN>
                                 </TD>
                                 <TD>
@@ -1580,7 +1580,7 @@
                                 </TD>
                                 <TD CLASS="R14C20" COLSPAN="3">
                                     <SPAN class="cu_wspace">
-                                        <t t-esc="line.price_unit or ''"/>
+                                        <t t-esc="doc.use_formatlang(line.price_unit, doc.currency_id)"/>
                                     </SPAN>
                                 </TD>
                                 <TD CLASS="R14C29" COLSPAN="4">
@@ -1591,7 +1591,7 @@
                                 </TD>
                                 <TD CLASS="R14C29" COLSPAN="4">
                                     <SPAN class="cu_wspace">
-                                        <t t-esc="line.price_subtotal or ''"/>
+                                        <t t-esc="doc.use_formatlang(line.price_subtotal, doc.currency_id)"/>
                                     </SPAN>
                                 </TD>
                                 <TD>
@@ -1784,7 +1784,7 @@
                             </TD>
                             <TD CLASS="R22C28" COLSPAN="4">
                                 <SPAN class="cu_wspace">
-                                    <t t-esc="doc.amount_untaxed or '0,00'"/>
+                                    <t t-esc="doc.use_formatlang(doc.amount_untaxed, doc.currency_id)"/>
                                 </SPAN>
                             </TD>
                             <TD>
@@ -1904,7 +1904,8 @@
                             </TD>
                             <TD CLASS="R22C28" COLSPAN="4">
                                 <SPAN class="cu_wspace">
-                                    <t t-esc="doc.amount_tax or '0,00'"/>
+<!--                                    <t t-esc="doc.amount_tax or '0,00'"/>-->
+                                    <t t-esc="doc.use_formatlang(doc.amount_tax, doc.currency_id)"/>
                                 </SPAN>
                             </TD>
                             <TD>
@@ -2201,8 +2202,7 @@
                                 <SPAN class="cu_wspace">Всего оказано услуг
                                     <t t-esc="doc.invoice_line_ids and len(doc.invoice_line_ids) or 0"/>
                                     , на сумму
-                                    <t t-esc="doc.amount_total or '0,00'"/>
-                                    руб.
+                                    <t t-esc="doc.use_formatlang(doc.amount_total, doc.currency_id)"/>
                                 </SPAN>
                             </TD>
                             <TD>
