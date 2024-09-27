@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2024 ArtLine Ltd <http://artlinespb.ru>, 2024
+# Copyright 2024 ArtLine Ltd <https://artline-erp.ru>, 2024
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 {
@@ -9,7 +9,7 @@
     "description": """
     """,
     "author": "ArtLine",
-    "website": "http://artlinespb.ru",
+    "website": "https://artline-erp.ru",
     "license": "AGPL-3",
     "category": "Accounting",
     "sequence": 0,
