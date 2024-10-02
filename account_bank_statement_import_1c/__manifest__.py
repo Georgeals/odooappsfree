@@ -1,16 +1,15 @@
-# -*- encoding: utf-8 -*-
-# Copyright ArtLineStudio Ltd, 2019 (<https://artline-erp.ru>)
-# Author: George Yanguzov <george@artlinespb.ru>
-# License AGPL-3.0 or later (<http://www.gnu.org/licenses/agpl>).
+# Copyright 2019 ArtLine Ltd <http://artlinespb.ru>, 2019
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 {
     'name': 'Bank Statement Import 1C',
     'category': 'Accounting',
-    'version': '11.0.1.1.2',
+    'version': '11.0.1.0.2',
     'author': 'ArtLine',
-    'website': 'https://artline-erp.ru/modul-import-vypisok-1c',
+    'website': 'https://artlinespb.ru/import-bank-statements-1c-format/',
     'depends': [
-        'account_bank_statement_import', 'account_invoicing'
+        'account_bank_statement_import',
+        'account_invoicing',
     ],
     'data': [
         'wizards/account_bank_statement_import_1c_view.xml',

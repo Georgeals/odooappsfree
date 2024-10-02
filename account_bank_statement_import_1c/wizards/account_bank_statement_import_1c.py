@@ -1,14 +1,12 @@
-# -*- encoding: utf-8 -*-
-# Copyright ArtLineStudio Ltd, 2019 (<https://artline-erp.ru>)
-# Author: George Yanguzov <george@artlinespb.ru>
-# License AGPL-3.0 or later (<http://www.gnu.org/licenses/agpl>).
+# Copyright ArtLine Ltd <http://artlinespb.ru>, 2019
+# License OPL-1
 
-import logging
-from datetime import datetime
-
+import dateutil.parser
+import hashlib
+from odoo.tools.translate import _
 from odoo import api, models
 from odoo.exceptions import UserError
-from odoo.tools.translate import _
+import logging
 
 _logger = logging.getLogger(__name__)
 
@@ -22,112 +20,97 @@ class AccountBankStatementImport(models.TransientModel):
 
     def _parse_file(self, data_file):
         if not self._check_file(data_file):
-            return super(AccountBankStatementImport, self)._parse_file(data_file)
+            return super(AccountBankStatementImport, self)._parse_file(
+                data_file)
         try:
             file_data = data_file.decode('cp1251')
         except:
-            raise UserError(_('Could not decode file.'))
-        section_index = file_data.find('Секция')
-        common_info_1c = file_data[:section_index]
-        common_info_1c = common_info_1c.strip()
-        common_info_1c_lines = common_info_1c.split('\r\n')
-        common_info_1c = {}
-        for line in common_info_1c_lines:
-            if line.find('=') > 0:
-                line_key_value = line.split('=')
-                common_info_1c[line_key_value[0]] = line_key_value[1]
-        sections_1c_string = file_data[section_index:]
-        sections_1c_lines = sections_1c_string.split('\r\n')
-        bank_statements = []
-        transactions_1c = []
-        # Temporary variables
-        section_name = ''
-        section_dict = {}
-        for line_1c in sections_1c_lines:
-            if line_1c.startswith('Секция'):
-                section_name = line_1c[6:]
-                section_dict = {}
-                continue
-            if section_name and line_1c.find('=') > 0:
-                line_1c_key_value = line_1c.split('=')
-                section_dict[line_1c_key_value[0]] = line_1c_key_value[1]
-            if line_1c.startswith('Конец'):
-                if line_1c.startswith('КонецФайла'):
-                    break
-                if section_name == 'РасчСчет':
-                    bank_statements.append(section_dict)  # section_dict.copy()
-                elif section_name.startswith('Документ'):
-                    transactions_1c.append(section_dict)  # section_dict.copy()
-                else:
-                    raise UserError(_('Unknown section type: %s.') % section_name)
-                section_name = ''
+            raise UserError(_('Could not decode file .'))
+        data = file_data
+        data = data.split('КонецРасчСчет')
+        data[0] = data[0].split('\r\n')
+        dicvp = dict()
 
-        # Get Company account number to check if they match the document account number
-        company = self.company_id
-        journals = [journal.bank_acc_number for journal in
-                    company.bank_journal_ids]
+        for l in range(len(data[0])):
+            data[0][l] = data[0][l].split('\n')
+            for j in range(len(data[0][l])):
+                if '=' in data[0][l][j]:
+                    t = data[0][l][j].split('=')
+                    dicvp[t[0]] = t[1]
 
-        account_number = common_info_1c['РасчСчет']
-        if account_number not in journals:
-            raise UserError(
-                _('The account number %s is not match any company bank account') % account_number)
+        data[0] = dicvp
+        data[1] = data[1].split('КонецДокумента')
 
+        for i in range(len(data[1])):
+            data[1][i] = data[1][i].split('\n')
+            dictran = dict()
+            for j in range(len(data[1][i])):
+                if '=' in data[1][i][j]:
+                    t = data[1][i][j].split('=')
+                    dictran[t[0]] = t[1]
+            data[1][i] = dictran
+
+        account_number = data[0]['РасчСчет']
         # bank statements data: list of dict containing (optional items marked by o) :
-        # 'date': date (e.g: 2013-06-26)
-        date_start = datetime.strptime(bank_statements[0]['ДатаНачала'], '%d.%m.%Y').date()
-        balance_start = float(bank_statements[0]['НачальныйОстаток'])  # -o 'balance_start': float (e.g: 8368.56)
-        balance_stop = float(bank_statements[-1]['КонечныйОстаток'])  # -o 'balance_end_real': float (e.g: 8888.88)
-        # 'transactions': list of dict containing :
-        transactions = []
-        for transaction_1c in transactions_1c:
-            if len(transaction_1c) > 0:
-                # 'name': string (e.g: 'KBC-INVESTERINGSKREDIET 787-5562831-01')
-                # 'date': date
-                vals_line = {
-                    # 'name': string (e.g: 'KBC-INVESTERINGSKREDIET 787-5562831-01')
-                    'name': transaction_1c['НазначениеПлатежа'],
-                    # 'date': date
-                    'date': datetime.strptime(transaction_1c['Дата'], '%d.%m.%Y').date()
-                }
-                # 'amount': float
-                if transaction_1c['ПлательщикРасчСчет'] == account_number:
-                    vals_line['amount'] = -float(transaction_1c['Сумма'])
-                    vals_line['account_number'] = transaction_1c['ПолучательРасчСчет']  # -o 'account_number': string
-                    vals_line['partner_name'] = transaction_1c['Получатель']  # -o 'partner_name': string
-                    # 'unique_import_id': string
-                    vals_line['unique_import_id'] = '{}{}{}'.format(transaction_1c['ПолучательРасчСчет'],
-                                                                    transaction_1c['Дата'].replace('.', ''),
-                                                                    transaction_1c['Номер'])
-                else:
-                    vals_line['amount'] = float(transaction_1c['Сумма'])
-                    vals_line['account_number'] = transaction_1c['ПлательщикРасчСчет']  # -o 'account_number': string
-                    vals_line['partner_name'] = transaction_1c['Плательщик']  # -o 'partner_name': string
-                    # #- 'unique_import_id': string
-                    vals_line['unique_import_id'] = '{}{}{}'.format(transaction_1c['ПлательщикРасчСчет'],
-                                                                    transaction_1c['Дата'].replace('.', ''),
-                                                                    transaction_1c['Номер'])
-                #-o 'note': string
-                vals_line['ref'] = 'п/п № {}'.format(transaction_1c['Номер'])  #-o 'ref': string
-                transactions.append(vals_line)
 
-        vals_bank_statement = {
+        date_start = dateutil.parser.parse(data[0]['ДатаНачала'],
+                                           dayfirst=True).date()  # 'date': date (e.g: 2013-06-26)
+        balance_start = float(data[0]['НачальныйОстаток'])  # -o 'balance_start': float (e.g: 8368.56)
+        balance_stop = float(data[0]['КонечныйОстаток'])  # -o 'balance_end_real': float (e.g: 8888.88)
+        transactions = []  # - 'transactions': list of dict containing :
+        vals_line = {}
+        vals_bank_statement = {}
+
+        for l in data[1]:
+            if len(l) > 0:
+                vals_line['name'] = l[
+                    'НазначениеПлатежа']  # 'name': string (e.g: 'KBC-INVESTERINGSKREDIET 787-5562831-01')
+                vals_line['date'] = dateutil.parser.parse(l['Дата'], dayfirst=True).date()  # - 'date': date
+                # - 'amount': float
+                if l['ПлательщикРасчСчет'] == account_number:
+                    vals_line['amount'] = -float(l['Сумма'])
+                    vals_line['account_number'] = l['ПолучательРасчСчет']  # -o 'account_number': string
+                    vals_line['partner_name'] = l['Получатель']  # -o 'partner_name': string
+                else:
+                    vals_line['amount'] = float(l['Сумма'])
+                    vals_line['account_number'] = l['ПлательщикРасчСчет']  # -o 'account_number': string
+                    vals_line['partner_name'] = l['Плательщик']  # -o 'partner_name': string
+                unique_import_id = ''.join(str(e) for e in vals_line.values())
+                hash_object = hashlib.md5(unique_import_id.encode('utf-8'))
+                vals_line['unique_import_id'] = l['Дата'].replace('.', '') + hash_object.hexdigest()
+                _logger.debug('Namber - %s, Hash - %s', l['Номер'], hash_object.hexdigest())
+                # -o 'note': string
+                vals_line['ref'] = 'п/п №' + l['Номер']  # -o 'ref': string
+                transactions.append(vals_line)
+                vals_line = {}
+        all_data = {
+            'name': 'from ' + data[0]['ДатаНачала'] + ' to ' + data[0]['ДатаКонца'],
             # 'name': string (e.g: '000000123')
-            'name': 'from ' + common_info_1c['ДатаНачала'] + ' to ' + common_info_1c['ДатаКонца'],
             'balance_start': balance_start,
             'date': date_start,  # 'date': date (e.g: 2013-06-26)
             'balance_end_real': balance_stop,
             'transactions': transactions
         }
-        return None, None, [vals_bank_statement]
+        vals_bank_statement.update(all_data)
+        return None, account_number, [vals_bank_statement]
+
+    def _check_acc_number_matching(self, account_number, journal_id):
+        """Check if account number matches journal account number."""
+        return journal_id.bank_account_id.acc_number == account_number
+
 
     def _complete_stmts_vals(self, stmt_vals, journal_id, account_number):
         """Match partner_id if hasn't been deducted yet."""
+
         res = super(AccountBankStatementImport, self)._complete_stmts_vals(
             stmt_vals, journal_id, account_number,
         )
         # If doesn't find account numbers of partner(normal behaviour is to
         # provide 'account_number', which the generic module uses to find
         # the partner), we have to find res.partner through the name
+        test = 5
+        if not self._check_acc_number_matching(account_number, journal_id):
+            raise UserError(_("No account number found matching '%s' in journal '%s'.") % (account_number, journal_id.name))
         partner_obj = self.env['res.partner']
         for statement in res:
             for line_vals in statement['transactions']:

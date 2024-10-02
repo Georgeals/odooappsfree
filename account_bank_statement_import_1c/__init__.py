@@ -1,6 +1,4 @@
-# -*- encoding: utf-8 -*-
-# Copyright ArtLineStudio Ltd, 2019 (<https://artline-erp.ru>)
-# Author: George Yanguzov <george@artlinespb.ru>
-# License AGPL-3.0 or later (<http://www.gnu.org/licenses/agpl>).
+# Copyright ArtLine Ltd <http://artlinespb.ru>, 2019
+# License OPL-1
 
 from . import wizards
