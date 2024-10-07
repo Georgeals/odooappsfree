@@ -12,7 +12,6 @@ from odoo import api, fields, models
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
-    vat = fields.Char(string="Tax ID", translate=True)
     kpp = fields.Char("KPP", size=9)
     okpo = fields.Char("OKPO", size=14)
 

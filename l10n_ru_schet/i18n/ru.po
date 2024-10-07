@@ -235,12 +235,6 @@ msgid "Stamp"
 msgstr "Печать"
 
 #. module: l10n_ru_schet
-#: model:ir.model.fields,field_description:l10n_ru_schet.field_res_partner__vat
-#: model:ir.model.fields,field_description:l10n_ru_schet.field_res_users__vat
-msgid "Tax ID"
-msgstr "ИНН"
-
-#. module: l10n_ru_schet
 #: model:ir.model.fields,help:l10n_ru_schet.field_res_partner__vat
 #: model:ir.model.fields,help:l10n_ru_schet.field_res_users__vat
 msgid ""
