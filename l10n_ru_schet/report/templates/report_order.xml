@@ -21,14 +21,7 @@
 
                 <h2 class="mt-4">
                     <span style="font-weight: bold; color: black;">
-                        <t t-esc="'Счет на оплату'"/>
-                        <!-- todo: и if и else возвращают одинаковое значение, зачем они нужны? -->
-                        <t t-esc="' № '"/>
-                        <t t-esc="doc.name"/>
-                        <t t-esc="' от '"/>
-                        <t t-esc="doc.date_order"
-                           t-options="{'widget': 'date'}"/>
-                        <t t-esc="' г.'"/>
+                        <t t-esc="'Счет на оплату № ' + doc.name + ' от ' + doc.date_order.strftime('%d/%m/%Y') + ' г.'"/>
                     </span>
                 </h2>
                 <div style="height: 2px; background-color: black;"></div>
