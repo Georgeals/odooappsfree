@@ -11,6 +11,7 @@ from odoo import api, models
 
 class RuSaleOrderReport(models.AbstractModel):
     _name = "report.l10n_ru_schet.report_order_ws"
+    _description = "Schet with stamp"
 
     def _get_report_values(self, docids, data=None):
         sale_orders = self.env["sale.order"].browse(docids)

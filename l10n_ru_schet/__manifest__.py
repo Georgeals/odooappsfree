@@ -4,7 +4,7 @@
 
 {
     "name": "Russia - Schet",
-    "version": "17.0.0.1.0",
+    "version": "17.0.0.1.1",
     "summary": "Счет на оплату",
     "description": """
 The module for print documents of Russia an invoice for payment.
@@ -35,8 +35,7 @@ The module for print documents of Russia an invoice for payment.
         "report/templates/report_order.xml",
         "report/templates/report_order_ws.xml",
         "report/templates/basic_templates.xml",
-        "data/data.xml",
-        # "data/l10n_ru_doc_data.xml",
+        "data/l10n_ru_doc_data.xml",
     ],
     "images": ["static/description/banner.png"],
     "css": ["static/src/css/l10n_ru_doc.css"],

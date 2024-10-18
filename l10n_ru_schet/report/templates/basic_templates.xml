@@ -195,7 +195,7 @@
 	</template>
 
 	<template id="document_header_table">
-		<table colspan="2" class="table table-borderless" style="border: 1px solid black;">
+		<table colspan="2" class="table table-sm table-borderless" style="border: 1px solid black;">
 			<colgroup>
 				<col style="width: 30%;"/>
 				<col style="width: 30%;"/>
@@ -203,7 +203,7 @@
 				<col style="width: 30%;"/>
 			</colgroup>
 			<tr>
-				<td colspan="2" rowspan="2" style="width: 30%; vertical-align: top;">
+				<td colspan="2" rowspan="2" style="width: 30%; vertical-align: middle;">
 					<t t-esc="(company.bank_id and company.bank_id.bank_name or '')+' '+(company.bank_id and company.bank_id.bank_id.city or '')"/>
 				</td>
 				<td style="width: 10%; text-align: center; border-bottom: 1px solid black;">БИК</td>
@@ -245,7 +245,7 @@
 				</td>
 			</tr>
 			<tr height="20px">
-				<td colspan="2" style="width: 30%; vertical-align: top; vertical-align: top;">
+				<td colspan="2" style="width: 30%; vertical-align: middle;">
 					<t t-esc="company.name or ''"/>
 				</td>
 				<td style="width: 10%;"></td>

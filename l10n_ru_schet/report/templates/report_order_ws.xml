@@ -21,14 +21,7 @@
 
                 <h2 class="mt-4">
                     <span style="font-weight: bold; color: black;">
-                        <t t-esc="'Счет на оплату'"/>
-                        <!-- todo: и if и else возвращают одинаковое значение, зачем они нужны? -->
-                        <t t-esc="' № '"/>
-                        <t t-esc="doc.name"/>
-                        <t t-esc="' от '"/>
-                        <t t-esc="doc.date_order"
-                           t-options="{'widget': 'date'}"/>
-                        <t t-esc="' г.'"/>
+                        Счет на оплату № <t t-esc="doc.name"/> от <t t-esc="doc.date_order" t-options="{'widget': 'date'}"/> г.
                     </span>
                 </h2>
                 <div style="height: 2px; background-color: black;"></div>
@@ -39,7 +32,7 @@
                         <span>
                             <span>Поставщик:</span>
                             <span style="font-weight: bold; margin-left: 50px;">
-                                <t t-esc="company.partner_id.get_address_for_schet()"/>
+                                <t t-esc="company.partner_id.get_full_name_for_schet()"/>
                             </span>
                         </span>
                     </div>
@@ -55,8 +48,8 @@
                         <span>
                             <span>Покупатель:</span>
                             <span style="font-weight: bold; margin-left: 40px;">
-                                <t t-esc="doc.partner_id.get_address_for_schet()"/>
-                                <t t-if="doc.partner_id.phone" t-esc="', тел. ' + doc.partner_id.phone"></t>
+                                <t t-esc="doc.partner_id.get_full_name_for_schet()"/>
+                                <t t-if="doc.partner_id.phone" t-esc="', тел.: ' + doc.partner_id.phone"/>
                             </span>
                         </span>
                     </div>

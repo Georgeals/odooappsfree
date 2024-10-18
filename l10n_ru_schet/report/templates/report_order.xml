@@ -39,7 +39,7 @@
                         <span>
                             <span>Поставщик:</span>
                             <span style="font-weight: bold; margin-left: 50px;">
-                                <t t-esc="company.partner_id.get_address_for_schet()"/>
+                                <t t-esc="company.partner_id.get_full_name_for_schet()"/>
                             </span>
                         </span>
                     </div>
@@ -55,7 +55,7 @@
                         <span>
                             <span>Покупатель:</span>
                             <span style="font-weight: bold; margin-left: 40px;">
-                                <t t-esc="doc.partner_id.get_address_for_schet()"/>
+                                <t t-esc="doc.partner_id.get_full_name_for_schet()"/>
                                 <t t-if="doc.partner_id.phone" t-esc="', тел. ' + doc.partner_id.phone"></t>
                             </span>
                         </span>

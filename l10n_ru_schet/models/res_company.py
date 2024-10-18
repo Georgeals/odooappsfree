@@ -15,7 +15,7 @@ class Company(models.Model):
     _inherit = "res.company"
 
     kpp = fields.Char(related="partner_id.kpp", readonly=False)
-    okpo = fields.Char(related="partner_id.okpo", readonly=False)
+    # okpo = fields.Char(related="partner_id.okpo", readonly=False)
     chief_id = fields.Many2one("res.users", "Chief")
     accountant_id = fields.Many2one("res.users", "General Accountant")
     print_facsimile = fields.Boolean(
@@ -44,7 +44,7 @@ class Company(models.Model):
         "Bank account for orders.",
         domain="[('partner_id', '=', partner_id)]",
     )
-
+# Поле 'partner_id', используемое в domain of python field 'bank_id' ([('partner_id', '=', partner_id)]), ограничено группой (группами) base.group_no_one.
     def check_bank_id_is_not_empty(self):
         for record in self:
             if not record.bank_id:

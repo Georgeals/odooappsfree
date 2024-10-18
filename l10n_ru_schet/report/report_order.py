@@ -12,6 +12,7 @@ from odoo.exceptions import ValidationError
 
 class RuSaleOrderReport(models.AbstractModel):
     _name = "report.l10n_ru_schet.report_order"
+    _description = "Schet"
 
     def _get_report_values(self, docids, data=None):
         sale_orders = self.env["sale.order"].browse(docids)

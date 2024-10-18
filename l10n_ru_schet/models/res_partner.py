@@ -8,21 +8,26 @@
 
 from odoo import api, fields, models
 
+DOC_ADDRESS_FORMAT = '%(street)s\n%(street2)s\n%(city)s %(state_code)s %(zip)s\n%(country_name)s'
+
 
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
-    vat = fields.Char(string="Tax ID", translate=True)
+    vat = fields.Char(string="Tax ID")
     kpp = fields.Char("KPP", size=9)
-    okpo = fields.Char("OKPO", size=14)
 
-    def get_address_for_schet(self):
+    def get_full_name_for_schet(self):
         self.ensure_one()
-        name = self.with_context({"lang": self.env.lang})._get_complete_name()
-        if vat := self.vat:
-            name += f", ИНН {vat}"
-        if kpp := self.kpp:
-            name += f", КПП {kpp}"
-        if address := self._display_address(without_company=True):
-            name += f", {address}"
-        return name
+        commercial_partner = self.commercial_partner_id
+        full_name = commercial_partner.with_context({"lang": commercial_partner.lang})._get_complete_name() # todo self.env.lang ??????????        
+        if commercial_partner.vat:
+            full_name += f", ИНН {commercial_partner.vat}"
+        if commercial_partner.kpp:
+            full_name += f", КПП {commercial_partner.kpp}"
+        post_address_format, args = commercial_partner._prepare_display_address(without_company=True)
+        address = DOC_ADDRESS_FORMAT % args
+        splitted_address = address.split("\n")
+        address = ", ".join([n for n in splitted_address if n.strip()])  
+        full_name += f", {address}"
+        return full_name

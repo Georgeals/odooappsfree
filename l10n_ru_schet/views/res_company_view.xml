@@ -8,10 +8,9 @@
         <field name="inherit_id" ref="base.view_company_form"/>
         <field name="arch" type="xml">
             <data>
-                <field name="email" position="after">
-                    <field name="vat"/>
+                <field name="vat" position="after">
                     <field name="kpp"/>
-                    <field name="okpo"/>
+                    <!-- <field name="okpo"/> -->
                     <field name="bank_id"/>
                 </field>
                 <xpath expr="//page" position="after">
@@ -28,13 +27,11 @@
                         </group>
                     </page>
                 </xpath>
-                <xpath expr="//field[@name='currency_id']" position="after">
-                    <field name="partner_id" invisible="1"/>
+                <xpath expr="//field[@name='currency_id']" position="after">          
+                    <field name="partner_id" invisible="1" readonly="1" required="0"/>
                     <field name="partner_is_company"/>
                     <field name="company_type_ru" invisible="partner_is_company == True" required="partner_is_company == False"/>
-                </xpath>
-                <xpath expr="//field[@name='vat']" position="replace">
-                </xpath>
+                </xpath>                
             </data>
         </field>
     </record>

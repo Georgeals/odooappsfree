@@ -19,17 +19,19 @@
         <record id="base.main_partner" model="res.partner">
             <field name="email">info@artline-erp.ru</field>
             <field name="website">https://artline-erp.ru/</field>
-            <field name="kpp">000000000</field>
-            <field name="okpo">00000000</field>
-            <field name="vat">0000000000</field>
+            <field name="kpp">781401001</field>
+            <!-- <field name="okpo">00000000</field> -->
+            <field name="vat">7810096670</field>
+            <field name="company_registry">1077847288397</field>
         </record>
 
         <record id="base.main_company" model="res.company">
             <field name="name">ООО "АртЛайнСтудия"</field>
-            <field name="street">ул. Оптиков</field>
-            <field name="street2">д. 37</field>
-            <field name="zip">123456</field>
+            <field name="street">ул. Оптиков, д. 37</field>
+            <field name="zip">197082</field>
             <field name="city">г. Санкт-Петербург</field>
+            <field name="country_id" ref="base.ru"/>
+            <field name="state_id" ref="base.state_ru_spe"/>
             <field name="chief_id" ref="base.user_root"/>
             <field name="accountant_id" ref="base.user_demo"/>
             <field name="print_facsimile">1</field>
@@ -37,11 +39,12 @@
             <field name="stamp" type="base64" file="l10n_ru_schet/static/image/stamp.png"/>
             <field name="bank_id" ref="main_company_bank"/>
             <field name="logo" type="base64" file="l10n_ru_schet/static/description/logo.png"/>
+            <field name="company_details"><![CDATA[ООО "АртЛайнСтудия"<br/>ул. Оптиков, д. 37<br/>г. Санкт-Петербург, 197082<br/>Российская Федерация]]></field>
         </record>
 
         <record model="res.partner" id="base.partner_root">
             <field name="name">Иванов Иван Петрович</field>
-            <field name="email">artline-test@mail.ru</field>
+            <field name="email">ivan@artline-erp.ru</field>
         </record>
 
         <record model="res.users" id="base.user_root">
@@ -51,7 +54,7 @@
 
         <record model="res.partner" id="base.partner_demo">
             <field name="name">Сидоров Семен Иванович</field>
-            <field name="email">artline-test@mail.ru</field>
+            <field name="email">semen@artline-erp.ru</field>
         </record>
 
         <record model="res.users" id="base.user_demo">
