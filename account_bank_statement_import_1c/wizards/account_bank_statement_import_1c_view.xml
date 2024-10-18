@@ -5,6 +5,7 @@
     License LGPL-3.0 or later (<http://www.gnu.org/licenses/lgpl>).
 -->
 <odoo>
+
     <record id="account_bank_statement_import_view" model="ir.ui.view">
         <field name="model">account.bank.statement.import</field>
         <field name="inherit_id" ref="account_bank_statement_import.account_bank_statement_import_view"/>
@@ -14,4 +15,5 @@
             </xpath>
         </field>
     </record>
+
 </odoo>
