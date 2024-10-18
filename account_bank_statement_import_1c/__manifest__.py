@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 # Copyright ArtLineStudio Ltd, 2019 (<https://artline-erp.ru>)
-# Author: George Yanguzov <george@artlinespb.ru>
+# Author: George Yanguzov <info@artline-erp.ru>
 # License AGPL-3.0 or later (<http://www.gnu.org/licenses/agpl>).
 
 {
@@ -20,9 +20,9 @@
         'static/description/banner.png'
     ],
     "contributors": [
-        "ArtLine <george@artlinespb.ru>",
+        "ArtLine <info@artline-erp.ru>",
     ],
     'installable': True,
     'license': 'AGPL-3',
-    'support': 'george@artlinespb.ru',
+    'support': 'info@artline-erp.ru',
 }

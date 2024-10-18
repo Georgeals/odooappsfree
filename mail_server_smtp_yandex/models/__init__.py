@@ -3,7 +3,7 @@
 #
 #    ArtLineStudio Ltd.
 #    Copyright (C) 2021-TODAY ArtLineStudio <https://artline-erp.ru/>.
-#    Author: George Yanguzov <george@artlinespb.ru>
+#    Author: George Yanguzov <info@artline-erp.ru>
 #    you can modify it under the terms of the GNU LESSER
 #    GENERAL PUBLIC LICENSE (LGPL v3), Version 3.
 #    This program is distributed in the hope that it will be useful,

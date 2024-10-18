@@ -17,10 +17,10 @@
         'static/description/banner.png'
     ],
     "contributors": [
-        "ArtLine <george@artlinespb.ru>",
+        "ArtLine <info@artline-erp.ru>",
     ],
     'installable': True,
     'license': 'AGPL-3',
-    'support': 'george@artlinespb.ru',
+    'support': 'info@artline-erp.ru',
 
 }

@@ -19,6 +19,6 @@ This module auto add description for internal of product to the service task des
     'depends': ['sale_timesheet'],
     'installable': True,
     'license': 'AGPL-3',
-    'support': 'george@artlinespb.ru',
-    "contributors": ["ArtLine <george@artlinespb.ru>"],
+    'support': 'info@artline-erp.ru',
+    "contributors": ["ArtLine <info@artline-erp.ru>"],
 }
