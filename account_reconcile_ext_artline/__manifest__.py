@@ -4,10 +4,8 @@
 
 {
     "name": "Block reconcile without partner",
-    "version": "11.0.0.1",
-    "summary": "Запрет сверки без указания партнера",
-    "description": """
-    """,
+    "version": "11.0.1.0.0",
+    "summary": "The module adds a blocking on bank transaction reconciliation operation without specifying a partner",
     "author": "ArtLine",
     "website": "https://artline-erp.ru",
     "license": "AGPL-3",
