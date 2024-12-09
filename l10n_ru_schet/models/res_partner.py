@@ -8,7 +8,7 @@
 
 from odoo import api, fields, models
 
-DOC_ADDRESS_FORMAT = '%(street)s\n%(street2)s\n%(city)s %(state_code)s %(zip)s\n%(country_name)s'
+DOC_ADDRESS_FORMAT = '%(zip)s, %(street)s\n%(street2)s\n%(city)s %(state_code)s \n%(country_name)s'
 
 
 class ResPartner(models.Model):
@@ -20,7 +20,7 @@ class ResPartner(models.Model):
     def get_full_name_for_schet(self):
         self.ensure_one()
         commercial_partner = self.commercial_partner_id
-        full_name = commercial_partner.with_context({"lang": commercial_partner.lang})._get_complete_name() # todo self.env.lang ??????????        
+        full_name = commercial_partner.with_context({"lang": commercial_partner.lang})._get_complete_name() # todo self.env.lang ?       
         if commercial_partner.vat:
             full_name += f", ИНН {commercial_partner.vat}"
         if commercial_partner.kpp:

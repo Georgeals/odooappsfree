@@ -33,13 +33,18 @@
             <field name="country_id" ref="base.ru"/>
             <field name="state_id" ref="base.state_ru_spe"/>
             <field name="chief_id" ref="base.user_root"/>
+            <field name="currency_id" ref="base.RUB"/>            
             <field name="accountant_id" ref="base.user_demo"/>
             <field name="print_facsimile">1</field>
             <field name="print_stamp">1</field>
             <field name="stamp" type="base64" file="l10n_ru_schet/static/image/stamp.png"/>
             <field name="bank_id" ref="main_company_bank"/>
             <field name="logo" type="base64" file="l10n_ru_schet/static/description/logo.png"/>
-            <field name="company_details"><![CDATA[ООО "АртЛайнСтудия"<br/>ул. Оптиков, д. 37<br/>г. Санкт-Петербург, 197082<br/>Российская Федерация]]></field>
+            <!-- source link: https://www.pochta.ru/support/post-rules/write-address -->
+            <field name="company_details"><![CDATA[ООО "АртЛайнСтудия"<br/>ул. Оптиков, д. 37<br/>г. Санкт-Петербург<br/>Российская Федерация<br/>197082]]></field>
+            <field name="report_footer">+7 (812) 242-64-20 | info@artline-erp.ru | ​https://artline-erp.ru</field>
+
+            
         </record>
 
         <record model="res.partner" id="base.partner_root">

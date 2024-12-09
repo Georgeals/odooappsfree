@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data noupdate="1">
-    <!-- todo делать ли? -->
-        <!-- res.lang -->
         <record model="base.language.install" id="install_russian">
             <field name="lang_ids" eval="[(4, ref('base.lang_ru'))]"/>
             <field name="overwrite">1</field>
         </record>
-
         <function model="base.language.install" name="lang_install">
             <value eval="[ref('install_russian')]"/>
         </function>
-
-        <!-- <record id="base.lang_ru" model="res.lang">        
-            <field name="active" eval="True"/>
-        </record> -->
-
-        <record id="base.ru" model="res.country">        
-            <field name="address_format" eval="'%(street)s\n%(street2)s\n%(city)s, %(zip)s\n%(country_name)s'"/>
+        <record id="base.ru" model="res.country">            
+            <!-- source link: https://www.pochta.ru/support/post-rules/write-address -->
+            <field name="address_format" eval="'%(street)s\n%(street2)s\n%(city)s\n%(state_name)s\n%(country_name)s\n%(zip)s'"/>            
             <field name="vat_label">НДС</field>
         </record>
     </data>

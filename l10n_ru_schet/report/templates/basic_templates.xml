@@ -110,7 +110,7 @@
 
 	<!-- Templates for both reports with and without stamp -->
 	<template id="document_products_table">
-		<table class="table table-borderless" style="border-collapse: collapse; width: 100%; table-layout: fixed;">
+		<table class="table table-borderless mt-4" style="border-collapse: collapse; width: 100%; table-layout: fixed;">
 			<!-- In case we want to repeat the header, remove "display: table-row-group" -->
 			<thead>
 				<tr style="">

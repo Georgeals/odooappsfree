@@ -41,10 +41,10 @@ class Company(models.Model):
     partner_is_company = fields.Boolean(related="partner_id.is_company", readonly=False)
     bank_id = fields.Many2one(
         "res.partner.bank",
-        "Bank account for orders.",
+        "Bank account for orders",
         domain="[('partner_id', '=', partner_id)]",
     )
-# Поле 'partner_id', используемое в domain of python field 'bank_id' ([('partner_id', '=', partner_id)]), ограничено группой (группами) base.group_no_one.
+    # Поле 'partner_id', используемое в domain of python field 'bank_id' ([('partner_id', '=', partner_id)]), ограничено группой (группами) base.group_no_one.
     def check_bank_id_is_not_empty(self):
         for record in self:
             if not record.bank_id:
