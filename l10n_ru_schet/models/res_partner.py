@@ -14,7 +14,7 @@ DOC_ADDRESS_FORMAT = '%(zip)s, %(street)s\n%(street2)s\n%(city)s %(state_code)s 
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
-    vat = fields.Char(string="Tax ID")
+    vat = fields.Char(string="Tax ID")  # todo Зачем нужна это строка, если она ничего не переопределяет? 
     kpp = fields.Char("KPP", size=9)
 
     def get_full_name_for_schet(self):

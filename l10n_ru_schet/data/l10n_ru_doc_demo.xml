@@ -32,7 +32,7 @@
             <field name="city">г. Санкт-Петербург</field>
             <field name="country_id" ref="base.ru"/>
             <field name="state_id" ref="base.state_ru_spe"/>
-            <field name="chief_id" ref="base.user_root"/>
+            <field name="chief_id" ref="base.user_admin"/>
             <field name="currency_id" ref="base.RUB"/>            
             <field name="accountant_id" ref="base.user_demo"/>
             <field name="print_facsimile">1</field>
@@ -47,12 +47,12 @@
             
         </record>
 
-        <record model="res.partner" id="base.partner_root">
+        <record model="res.partner" id="base.partner_admin">
             <field name="name">Иванов Иван Петрович</field>
             <field name="email">ivan@artline-erp.ru</field>
         </record>
 
-        <record model="res.users" id="base.user_root">
+        <record model="res.users" id="base.user_admin">
             <field name="signature">Иванов Иван Петрович</field>
             <field name="facsimile" type="base64" file="l10n_ru_schet/static/image/facsimilie.png"/>
         </record>

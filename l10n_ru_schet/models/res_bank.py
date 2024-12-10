@@ -19,3 +19,4 @@ class ResPartnerBank(models.Model):
     _inherit = "res.partner.bank"
 
     bank_corr_acc = fields.Char(related="bank_id.corr_acc", readonly=True)
+    # todo Зачем нужно это поле, если оно не выводится в карточке? readonly=True не нужно  By default, related fields are: readonly https://www.odoo.com/documentation/17.0/developer/reference/backend/orm.html#related-fields
