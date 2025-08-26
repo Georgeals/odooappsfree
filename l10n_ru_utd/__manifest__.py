@@ -33,7 +33,7 @@
     "website": "https://artlinespb.ru/",
     "category": "Localization",
     "version": "17.0.0.0",
-    "depends": ["base", "l10n_ru_doc"],
+    "depends": ["base"],
     "data": [
         "report/report.xml",
         "report/template.xml",
