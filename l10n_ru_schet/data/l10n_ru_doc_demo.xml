@@ -25,7 +25,18 @@
             <field name="company_registry">1077847288397</field>
         </record>
 
+        <record id="base.RUB" model="res.currency">
+            <field name="active">1</field>
+        </record>
+
+        <record id="rub_pricelist" model="product.pricelist">
+            <field name="name">Прайслист в рублях</field>
+            <field name="currency_id" ref="base.RUB"/>
+            <field name="discount_policy">with_discount</field>
+        </record>
+
         <record id="base.main_company" model="res.company">
+            <field name="external_report_layout_id" ref="web.external_layout_boxed"/>
             <field name="name">ООО "АртЛайнСтудия"</field>
             <field name="street">ул. Оптиков, д. 37</field>
             <field name="zip">197082</field>
@@ -33,18 +44,15 @@
             <field name="country_id" ref="base.ru"/>
             <field name="state_id" ref="base.state_ru_spe"/>
             <field name="chief_id" ref="base.user_admin"/>
-            <field name="currency_id" ref="base.RUB"/>            
+<!--            <field name="currency_id" ref="base.RUB"/>  #  triggers: odoo.exceptions.UserError: You cannot change the currency of the company since some journal items already exist-->
             <field name="accountant_id" ref="base.user_demo"/>
             <field name="print_facsimile">1</field>
             <field name="print_stamp">1</field>
             <field name="stamp" type="base64" file="l10n_ru_schet/static/image/stamp.png"/>
             <field name="bank_id" ref="main_company_bank"/>
             <field name="logo" type="base64" file="l10n_ru_schet/static/description/logo.png"/>
-            <!-- source link: https://www.pochta.ru/support/post-rules/write-address -->
             <field name="company_details"><![CDATA[ООО "АртЛайнСтудия"<br/>ул. Оптиков, д. 37<br/>г. Санкт-Петербург<br/>Российская Федерация<br/>197082]]></field>
             <field name="report_footer">+7 (812) 242-64-20 | info@artline-erp.ru | ​https://artline-erp.ru</field>
-
-            
         </record>
 
         <record model="res.partner" id="base.partner_admin">
@@ -67,5 +75,30 @@
             <field name="facsimile" type="base64" file="l10n_ru_schet/static/image/facsimilie1.png"/>
         </record>
 
+        <record model="sale.order" id="demo_order_schet">
+            <field name="pricelist_id" ref="rub_pricelist"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="date_order">2020-01-01</field>
+            <field name="name">Счет на оплату</field>
+            <field name="partner_id" ref="base.res_partner_3"/>
+            <field name="partner_invoice_id" ref="base.res_partner_3"/>
+            <field name="partner_shipping_id" ref="base.res_partner_3"/>
+            <field name="user_id" ref="base.user_admin"/>
+        </record>
+
+        <record model="sale.order.line" id="demo_order_line">
+            <field name="order_id" ref="demo_order_schet"/>
+            <field name="product_template_id" ref="product.product_product_25_product_template"/>
+            <field name="customer_lead">7</field>
+            <field name="name">Счет на оплату</field>
+            <field name="price_unit">1000</field>
+            <field name="product_uom_qty">1</field>
+            <field name="product_uom" ref="uom.product_uom_unit"/>
+            <field name="price_subtotal">1000</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="currency_id" ref="base.RUB"/>
+            <field name="order_partner_id" ref="base.res_partner_3"/>
+            <field name="product_id" ref="product.product_product_25"/>
+        </record>
     </data>
 </odoo>
