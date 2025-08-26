@@ -5,7 +5,7 @@
     'description': """Sbis exchange""",
     'author': "George Yanguzov",
     'company': 'ArtLineStudio LTD',
-    'website': "https://artlinespb.ru/",
+    'website': "https://artline-erp.ru/modul-integracii-sbis",
     'category': 'Uncategorized',
     'version': '17.0.0.1.0',
     'depends': ['base', 'account', 'l10n_ru_doc', 'l10n_ru_utd',
