@@ -20,7 +20,7 @@
     'name': "Russian document - Partner act reconciliation",
     'summary': """Russian document - Partner act reconciliation""",
     'description': """Russian document - Partner act reconciliation""",
-    'author': "George Yanguzov",
+    "author": "ArtLine",
     'company': 'ArtLineStudio LTD',
     'website': "https://artlinespb.ru/",
     'category': 'Accounting',

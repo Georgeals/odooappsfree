@@ -3,7 +3,7 @@
     'name': "Sbis exchange",
     'summary': """Sbis exchange""",
     'description': """Sbis exchange""",
-    'author': "George Yanguzov",
+    "author": "ArtLine",
     'company': 'ArtLineStudio LTD',
     'website': "https://artline-erp.ru/modul-integracii-sbis",
     'category': 'Uncategorized',
