@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2019 ArtLine Ltd <http://artlinespb.ru>, 2019
-# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
 
 {
     "name": "Russia - Schet",
@@ -17,7 +17,7 @@ The module for print documents of Russia an invoice for payment.
     """,
     "author": "ArtLine",
     "website": "http://artlinespb.ru",
-    "license": "AGPL-3",
+    "license": "LGPL-3",
     "category": "Localization",
     "sequence": 0,
     "depends": ["sale_management"],
