@@ -10,6 +10,7 @@
     'version': '17.0.0.1.0',
     'depends': ['base', 'account', 'l10n_ru_utd',
                 'l10n_ru_schet_factura', 'l10n_ru_act'],
+    "license": "LGPL-3",
     'data': [
         'security/ir.model.access.csv',
         'views/account_config_setting_views.xml',

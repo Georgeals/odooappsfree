@@ -41,4 +41,5 @@
         "report/basic_templates.xml",
         "res_company_views.xml",
     ],
+    "license": "LGPL-3",
 }
