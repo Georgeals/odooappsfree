@@ -8,7 +8,7 @@
     'website': "https://artline-erp.ru/modul-integracii-sbis",
     'category': 'Uncategorized',
     'version': '17.0.0.1.0',
-    'depends': ['base', 'account', 'l10n_ru_doc', 'l10n_ru_utd',
+    'depends': ['base', 'account', 'l10n_ru_utd',
                 'l10n_ru_schet_factura', 'l10n_ru_act'],
     'data': [
         'security/ir.model.access.csv',
